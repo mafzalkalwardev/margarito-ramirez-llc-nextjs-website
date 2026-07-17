@@ -14,14 +14,15 @@
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     deviceScaleFactor: 1,
+    bypassCSP: true,
   });
   const page = await context.newPage();
 
   for (const item of pages) {
-    const url = base + item.path;
+    const url = base + item.path + "?v=" + Date.now();
     console.log("Capturing", url);
     await page.goto(url, { waitUntil: "networkidle", timeout: 90000 });
-    await page.waitForTimeout(1800);
+    await page.waitForTimeout(2000);
     await page.screenshot({
       path: `docs/screenshots/${item.name}-desktop.png`,
       fullPage: false,
@@ -29,7 +30,7 @@
   }
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(base + "/", { waitUntil: "networkidle", timeout: 90000 });
+  await page.goto(base + "/?v=" + Date.now(), { waitUntil: "networkidle", timeout: 90000 });
   await page.waitForTimeout(1500);
   await page.screenshot({ path: "docs/screenshots/home-mobile.png", fullPage: false });
 
