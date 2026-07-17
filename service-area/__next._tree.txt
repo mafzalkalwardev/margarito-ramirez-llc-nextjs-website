@@ -1,4 +1,4 @@
-:HL["/margarito-ramirez-llc-nextjs-website/_next/static/chunks/2sv91vgxy13ku.css","style"]
+:HL["/margarito-ramirez-llc-nextjs-website/_next/static/chunks/36c8kd6-7bn8a.css","style"]
 :HL["/margarito-ramirez-llc-nextjs-website/_next/static/media/03bda585a99c6450-s.p.32sris142tqlb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/margarito-ramirez-llc-nextjs-website/_next/static/media/03fc1b4a8d284b5e-s.p.0wiir8udbzjvx.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"service-area","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"56zXdjMDXeow1KorPRTXJ"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"service-area","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"KHrLO9Gxvh8pfOAtv4I2D"}
