@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { company } from '@/lib/company';
-import { SectionHeading } from '@/components/section-heading';
+import { PageHero } from '@/components/page-hero';
+import { SiteContainer } from '@/components/site-container';
 import { SmsConsentForm, SmsOptOutForm } from '@/components/sms-forms';
 import { SmsDisclosureCard } from '@/components/sms-disclosure-card';
 import { createPageMetadata } from '@/lib/seo';
@@ -18,52 +19,34 @@ export default function SmsConsentPage() {
 
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
-          Your communication choices
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-          Customer-care SMS consent
-        </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          Affirmatively choose whether to receive recurring IT support text messages from{' '}
-          <strong>{sms.brandDisplayName}</strong>. The checkbox starts unchecked, and consent is never
-          a condition of purchase.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Messaging choices"
+        title="Customer-care SMS consent"
+        description={`Affirmatively choose whether to receive recurring IT support text messages from ${sms.brandDisplayName}. The checkbox starts unchecked, and consent is never a condition of purchase.`}
+      />
 
-      <section className="border-y border-slate-200 bg-white py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-          <div>
-            <SectionHeading
-              eyebrow="What to expect"
-              title={`Program: ${sms.name}`}
-              description={sms.description}
-            />
-            <p className="mt-6 max-w-3xl text-sm leading-7 text-slate-600">
-              {sms.messageFrequency} {sms.ratesDisclosure} {sms.helpInstructions}{' '}
-              {sms.stopInstructions} Entering a phone number does not create consent. Enrollment
-              occurs only after you select the separate checkbox and submit this form.
-            </p>
-          </div>
-          <SmsDisclosureCard />
+      <SiteContainer className="grid gap-10 py-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <h2 className="text-2xl font-semibold text-[var(--ink)]">Program: {sms.name}</h2>
+          <p className="mt-4 text-base leading-8 text-[var(--muted)]">{sms.description}</p>
+          <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
+            {sms.messageFrequency} {sms.ratesDisclosure} {sms.helpInstructions} {sms.stopInstructions}
+          </p>
         </div>
-      </section>
+        <SmsDisclosureCard />
+      </SiteContainer>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-slate-900">Enroll</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              Separate affirmative opt-in for {sms.brandDisplayName} Customer Care SMS only.
-            </p>
+      <section className="border-t border-[var(--border)] bg-white py-16">
+        <SiteContainer className="grid gap-10 lg:grid-cols-2">
+          <div className="border border-[var(--border)] p-8">
+            <h2 className="text-2xl font-semibold text-[var(--ink)]">Enroll</h2>
             <div className="mt-6">
               <SmsConsentForm />
             </div>
           </div>
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-slate-900">Opt out online</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
+          <div className="border border-[var(--border)] p-8">
+            <h2 className="text-2xl font-semibold text-[var(--ink)]">Opt out online</h2>
+            <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
               For the fastest removal, reply STOP to any message. You may also submit your mobile
               number here.
             </p>
@@ -71,7 +54,7 @@ export default function SmsConsentPage() {
               <SmsOptOutForm />
             </div>
           </div>
-        </div>
+        </SiteContainer>
       </section>
     </main>
   );

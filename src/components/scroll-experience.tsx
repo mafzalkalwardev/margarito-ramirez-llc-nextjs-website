@@ -11,84 +11,28 @@ export function ScrollExperience() {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!progressRef.current) return;
 
-    if (progressRef.current) {
-      gsap.fromTo(
-        progressRef.current,
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: 'none',
-          scrollTrigger: {
-            start: 0,
-            end: 'max',
-            scrub: 0.2,
-          },
-        },
-      );
-    }
-
-    if (prefersReducedMotion) return;
-
-    const sections = gsap.utils.toArray<HTMLElement>('main section:not(:first-child)');
-    sections.forEach((section) => {
-      gsap.fromTo(
-        section,
-        { autoAlpha: 0, y: 42 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 88%',
-            once: true,
-          },
-        },
-      );
-    });
-
-    gsap.utils.toArray<HTMLElement>('[data-gsap-stagger]').forEach((group) => {
-      const children = Array.from(group.children);
-      gsap.fromTo(
-        children,
-        { autoAlpha: 0, y: 24 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.65,
-          stagger: 0.09,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: group,
-            start: 'top 84%',
-            once: true,
-          },
-        },
-      );
-    });
-
-    gsap.utils.toArray<HTMLElement>('[data-gsap-parallax]').forEach((element) => {
-      gsap.to(element, {
-        yPercent: 16,
+    gsap.fromTo(
+      progressRef.current,
+      { scaleX: 0 },
+      {
+        scaleX: 1,
         ease: 'none',
         scrollTrigger: {
-          trigger: element.parentElement,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
+          start: 0,
+          end: 'max',
+          scrub: 0.2,
         },
-      });
-    });
+      },
+    );
   });
 
   return (
     <div
       ref={progressRef}
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-gradient-to-r from-red-500 via-rose-400 to-red-600"
+      className="fixed inset-x-0 top-0 z-[70] h-[2px] origin-left bg-[var(--accent)]"
     />
   );
 }

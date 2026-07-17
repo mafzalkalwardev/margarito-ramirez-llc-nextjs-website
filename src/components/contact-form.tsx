@@ -25,7 +25,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
         <input
           required
           name="full_name"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           placeholder="Your name"
         />
       </label>
@@ -36,7 +36,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
           required
           type="email"
           name="email"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           placeholder="you@example.com"
         />
       </label>
@@ -46,7 +46,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
         <input
           type="tel"
           name="telephone"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           placeholder="Optional"
         />
       </label>
@@ -57,7 +57,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
           required
           name="service_of_interest"
           defaultValue=""
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
         >
           <option value="" disabled>
             Select a service
@@ -74,7 +74,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
         <textarea
           required
           name="message"
-          className="mt-2 min-h-32 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 min-h-32 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           placeholder="Describe what is happening and what you need."
         />
       </label>
@@ -106,7 +106,7 @@ export function ContactForm({ heading = 'Send a support inquiry' }: ContactFormP
 
       <button
         type="submit"
-        className="inline-flex items-center rounded-full bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
+        className="inline-flex items-center rounded-md bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
       >
         Send message
       </button>

@@ -2,13 +2,15 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { BrandLogo } from '@/components/brand-logo';
-import { SectionHeading } from '@/components/section-heading';
+import { PageHero } from '@/components/page-hero';
+import { SiteContainer } from '@/components/site-container';
+import { buttonVariants } from '@/components/ui/button';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: `About ${company.serviceBrand} | ${company.legalName}`,
   description:
-    'Learn about Margarito Ramirez IT Solutions, the IT-support service brand of MARGARITO RAMIREZ LLC, including entity details, purpose, and California and Texas locations.',
+    'Learn about Margarito Ramirez IT Solutions, the IT-support service brand of MARGARITO RAMIREZ LLC, including entity details, purpose, and locations.',
   path: '/about/',
   keywords: ['about Margarito Ramirez', 'California LLC IT support', 'Sherman Oaks IT company'],
 });
@@ -16,93 +18,52 @@ export const metadata: Metadata = createPageMetadata({
 export default function AboutPage() {
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="mb-8">
-          <BrandLogo size={72} />
-        </div>
-        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
-          About our company
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-          {company.serviceBrand}
-        </h1>
-        <p className="mt-3 text-xl font-medium text-slate-700">
-          Technology support grounded in clear communication.
-        </p>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          {company.brandStatement} We are a {company.businessType}.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="About"
+        title={company.serviceBrand}
+        description="Technology support grounded in clear communication for small businesses, professional offices, and remote workers."
+      />
 
-      <section className="border-y border-slate-200 bg-white py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-2xl font-semibold text-slate-900">Company profile</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <SiteContainer className="grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="space-y-6 text-base leading-8 text-[var(--muted)]">
+          <BrandLogo size={64} />
+          <p>{company.brandStatement}</p>
+          <p>
+            Every engagement begins by understanding the request, confirming scope and availability,
+            and communicating the next step clearly. We do not invent guarantees, inflate service
+            promises, or enroll customers in text messages through ordinary contact forms.
+          </p>
+          <ul className="space-y-2">
+            <li>• Clear customer communication</li>
+            <li>• Service scope confirmed before work begins</li>
+            <li>• Accessible email-based support channels</li>
+            <li>• Optional, permission-based Customer Care SMS</li>
+          </ul>
+          <Link href="/contact/" className={buttonVariants({ variant: 'primary' })}>
+            Contact the company
+          </Link>
+        </div>
+
+        <aside className="border border-[var(--border)] bg-white p-8">
+          <h2 className="text-xl font-semibold text-[var(--ink)]">Company profile</h2>
+          <dl className="mt-6 space-y-5 text-sm">
             {[
               ['Legal name', company.legalName],
               ['Sole member', company.soleMember],
-              ['Entity', company.businessType],
-              ['Formed', company.established],
+              ['Entity type', company.businessType],
               ['Entity number', company.entityNumber],
-              ['Service brand', company.serviceBrand],
+              ['Formed', company.established],
+              ['California', company.californiaAddress],
+              ['Texas office', company.texasOffice],
             ].map(([label, value]) => (
-              <div key={label} className="border-t border-slate-200 pt-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{label}</p>
-                <p className="mt-2 text-sm font-medium leading-6 text-slate-900">{value}</p>
+              <div key={label}>
+                <dt className="font-semibold text-[var(--ink)]">{label}</dt>
+                <dd className="mt-1 whitespace-pre-line text-[var(--muted)]">{value}</dd>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <SectionHeading
-              eyebrow="Our purpose"
-              title="Practical IT support without inflated promises."
-              description="We provide practical IT support and technology consulting for small and medium-sized businesses, local professional offices, and independent remote workers."
-            />
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              Every engagement begins by understanding the request, confirming scope and availability,
-              and communicating the next step clearly.
-            </p>
-            <ul className="mt-8 space-y-3 text-sm leading-7 text-slate-600">
-              <li>• Clear customer communication</li>
-              <li>• Service scope confirmed before work begins</li>
-              <li>• Accessible email-based support channels</li>
-              <li>• Optional, permission-based Customer Care SMS</li>
-            </ul>
-            <Link
-              href="/contact/"
-              className="mt-8 inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
-            >
-              Contact the company
-            </Link>
-          </div>
-          <div className="rounded-[32px] bg-slate-950 p-8 text-white lg:p-10">
-            <h3 className="text-2xl font-semibold">Locations</h3>
-            <div className="mt-8 space-y-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red-300">
-                  California
-                </p>
-                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">
-                  {company.californiaAddress}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red-300">
-                  Texas office
-                </p>
-                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">
-                  {company.texasOffice}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </dl>
+        </aside>
+      </SiteContainer>
     </main>
   );
 }

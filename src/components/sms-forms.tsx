@@ -23,7 +23,7 @@ export function SmsConsentForm() {
           <input
             required
             name="first_name"
-            className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+            className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           />
         </label>
         <label className="block text-sm font-medium text-slate-700">
@@ -31,7 +31,7 @@ export function SmsConsentForm() {
           <input
             required
             name="last_name"
-            className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+            className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           />
         </label>
       </div>
@@ -42,7 +42,7 @@ export function SmsConsentForm() {
           required
           type="tel"
           name="mobile_number"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
           placeholder="Mobile number"
         />
       </label>
@@ -52,7 +52,7 @@ export function SmsConsentForm() {
         <input
           type="email"
           name="email"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
         />
       </label>
 
@@ -62,7 +62,7 @@ export function SmsConsentForm() {
           required
           name="message_category"
           defaultValue=""
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
         >
           <option value="" disabled>
             Select a category
@@ -73,7 +73,7 @@ export function SmsConsentForm() {
         </select>
       </label>
 
-      <label className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50/60 p-4 text-sm leading-7 text-slate-700">
+      <label className="flex items-start gap-3 rounded-md border border-red-200 bg-red-50/70 p-4 text-sm leading-7 text-slate-700">
         <input
           required
           type="checkbox"
@@ -134,7 +134,7 @@ export function SmsOptOutForm() {
           required
           type="tel"
           name="mobile_number"
-          className="mt-2 w-full rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
+          className="mt-2 w-full rounded-md border border-slate-200 bg-[var(--surface)] px-4 py-3 outline-none ring-[var(--accent)] focus:ring-2"
         />
       </label>
 

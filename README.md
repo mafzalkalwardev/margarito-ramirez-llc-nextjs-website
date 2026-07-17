@@ -62,19 +62,15 @@ The content avoids invented guarantees and makes service scope, support hours, l
 
 ## Highlights
 
-- Modern brand-first interface with a responsive animated hero
-- Professional red brand palette with matching logo and accents
-- Framer Motion interactions and reduced-motion support
-- GSAP + ScrollTrigger reveals, parallax, staggered sections, and reading progress
-- shadcn-style local UI primitives powered by CVA, `clsx`, and `tailwind-merge`
-- Continuous capability scroller and responsive mobile navigation
-- Shared site header, footer, metadata, Open Graph, Twitter cards, and JSON-LD
-- SEO sitemap, robots.txt, canonical URLs, and FAQ schema
-- Dedicated support, service area, FAQ, privacy, terms, and SMS pages
-- Separate contact and SMS consent flows (Twilio/Vonage-friendly disclosures)
-- Accessible focus states, semantic structure, and responsive layouts
+- Editorial company layout (not a SaaS marketing template stack)
+- Brand-first full-bleed hero with Fraunces + IBM Plex Sans
+- Lean homepage: hero → facts → services → process → company → CTA
+- Shared architecture: `SiteContainer`, `PageHero`, header/footer, forms
+- Red professional palette with matching logo
+- Framer Motion used sparingly; GSAP scroll progress only
+- SEO sitemap, robots.txt, canonicals, Open Graph, and JSON-LD
+- Separate contact and SMS consent flows (Twilio/Vonage-friendly)
 - Static export optimized for GitHub Pages
-- Custom brand logo and browser-tab icon
 
 ## SEO
 

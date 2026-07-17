@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Source_Sans_3 } from 'next/font/google';
+import { Fraunces, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import { company } from '@/lib/company';
 import { SiteHeader } from '@/components/site-header';
@@ -8,13 +8,13 @@ import { OrganizationJsonLd } from '@/components/json-ld';
 import { ScrollExperience } from '@/components/scroll-experience';
 import { absoluteUrl, createPageMetadata } from '@/lib/seo';
 
-const outfit = Outfit({
+const display = Fraunces({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['500', '600', '700'],
 });
 
-const sourceSans = Source_Sans_3({
+const body = IBM_Plex_Sans({
   variable: '--font-body',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${sourceSans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-[var(--background)] text-slate-900">
+    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-[var(--background)] text-[var(--foreground)]">
         <OrganizationJsonLd />
         <ScrollExperience />
         <SiteHeader />

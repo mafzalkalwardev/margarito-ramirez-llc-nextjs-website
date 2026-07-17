@@ -24,7 +24,7 @@ export function BrandLogo({
         width={size}
         height={size}
         unoptimized
-        className="rounded-xl shadow-sm ring-1 ring-slate-200/80 bg-[var(--primary)]"
+        className="rounded-md shadow-sm ring-1 ring-[var(--border)] bg-[var(--ink)]"
       />
       {withWordmark ? (
         <span className={cn('min-w-0', wordmarkClassName)}>

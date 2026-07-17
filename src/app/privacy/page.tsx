@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
+import { PageHero } from '@/components/page-hero';
+import { SiteContainer } from '@/components/site-container';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -13,20 +15,13 @@ export const metadata: Metadata = createPageMetadata({
 export default function PrivacyPolicyPage() {
   return (
     <main>
-      <section className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
-          Legal & policy
-        </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Privacy Policy</h1>
-        <p className="mt-4 text-sm text-slate-500">
-          Effective {company.policyEffectiveDate} · Last updated {company.policyEffectiveDate}
-        </p>
-        <p className="mt-6 text-base leading-8 text-slate-600">
-          This policy explains how {company.legalName} collects, uses, protects, and retains
-          information through this website and its customer communications.
-        </p>
-
-        <div className="prose-legal mt-10 space-y-8 text-sm leading-7 text-slate-600">
+      <PageHero
+        eyebrow="Legal & policy"
+        title="Privacy Policy"
+        description={`Effective ${company.policyEffectiveDate}. How ${company.legalName} collects, uses, protects, and retains information.`}
+      />
+      <SiteContainer className="max-w-3xl py-16">
+        <div className="space-y-8 border border-[var(--border)] bg-white p-8 text-sm leading-7 text-[var(--muted)] sm:p-10">
           <section>
             <h2 className="text-xl font-semibold text-slate-900">1. Who we are</h2>
             <p className="mt-3">
@@ -174,7 +169,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
         </div>
-      </section>
+      </SiteContainer>
     </main>
   );
 }

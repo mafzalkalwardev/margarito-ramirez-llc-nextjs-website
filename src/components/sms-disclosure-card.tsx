@@ -5,7 +5,7 @@ export function SmsDisclosureCard() {
   const sms = company.smsProgram;
 
   return (
-    <aside className="rounded-[28px] border border-red-200 bg-red-50/70 p-6 text-sm leading-7 text-slate-700">
+    <aside className="border border-red-200 bg-red-50/80 p-6 text-sm leading-7 text-slate-700">
       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">
         Messaging program disclosure
       </p>

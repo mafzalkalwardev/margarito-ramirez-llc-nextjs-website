@@ -1,15 +1,16 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #faf7f7;
-  --foreground: #1a0f0f;
+  --background: #f3f4f6;
+  --foreground: #111827;
   --surface: #ffffff;
-  --primary: #1a0a0a;
-  --accent: #b91c1c;
-  --accent-bright: #f87171;
-  --accent-soft: #fee2e2;
-  --muted: #6b7280;
-  --border: #e8dede;
+  --primary: #111827;
+  --accent: #c1121f;
+  --accent-bright: #e5383b;
+  --accent-soft: #fde8ea;
+  --muted: #4b5563;
+  --border: #d1d5db;
+  --ink: #0b0f19;
 }
 
 @theme inline {
@@ -40,12 +41,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.02em;
 }
 
 ::selection {
-  background: rgba(185, 28, 28, 0.22);
-  color: #1a0f0f;
+  background: rgba(193, 18, 31, 0.2);
+  color: #111827;
 }
 
 *:focus-visible {
@@ -53,34 +55,14 @@ h6 {
   outline-offset: 3px;
 }
 
-.ambient-grid {
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black 15%, transparent 90%);
+.site-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
 }
 
-.text-balance {
-  text-wrap: balance;
-}
-
-.marquee-track {
-  animation: marquee 28s linear infinite;
-  width: max-content;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.rule {
+  height: 1px;
+  background: var(--border);
 }
 
 @keyframes accordion-down {
