@@ -2,14 +2,17 @@ import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 import { SmsConsentForm, SmsOptOutForm } from '@/components/sms-forms';
+import { SmsDisclosureCard } from '@/components/sms-disclosure-card';
 
 export const metadata: Metadata = {
   title: `SMS Consent & Opt-Out | ${company.serviceBrand}`,
   description:
-    'Affirmatively choose whether to receive recurring IT support text messages from MARGARITO RAMIREZ LLC.',
+    'Affirmatively choose whether to receive recurring IT support text messages from MARGARITO RAMIREZ LLC. Consent is not a condition of purchase.',
 };
 
 export default function SmsConsentPage() {
+  const sms = company.smsProgram;
+
   return (
     <main>
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
@@ -20,23 +23,27 @@ export default function SmsConsentPage() {
           Customer-care SMS consent
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          Affirmatively choose whether to receive recurring IT support text messages. The checkbox
-          starts unchecked, and consent is never a condition of purchase.
+          Affirmatively choose whether to receive recurring IT support text messages from{' '}
+          <strong>{sms.brandDisplayName}</strong>. The checkbox starts unchecked, and consent is never
+          a condition of purchase.
         </p>
       </section>
 
       <section className="border-y border-slate-200 bg-white py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="What to expect"
-            title={`Program: ${company.smsProgram.name}`}
-            description={`${company.brandStatement} Messages concern IT support tickets, scheduled troubleshooting, requested service information, and direct support responses. No marketing or promotional messages are sent.`}
-          />
-          <p className="mt-6 max-w-3xl text-sm leading-7 text-slate-600">
-            Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP
-            for help. Entering a phone number does not create consent. Enrollment occurs only after you
-            select the separate checkbox and submit this form.
-          </p>
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+          <div>
+            <SectionHeading
+              eyebrow="What to expect"
+              title={`Program: ${sms.name}`}
+              description={sms.description}
+            />
+            <p className="mt-6 max-w-3xl text-sm leading-7 text-slate-600">
+              {sms.messageFrequency} {sms.ratesDisclosure} {sms.helpInstructions}{' '}
+              {sms.stopInstructions} Entering a phone number does not create consent. Enrollment
+              occurs only after you select the separate checkbox and submit this form.
+            </p>
+          </div>
+          <SmsDisclosureCard />
         </div>
       </section>
 
@@ -44,6 +51,9 @@ export default function SmsConsentPage() {
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
             <h2 className="text-2xl font-semibold text-slate-900">Enroll</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Separate affirmative opt-in for {sms.brandDisplayName} Customer Care SMS only.
+            </p>
             <div className="mt-6">
               <SmsConsentForm />
             </div>

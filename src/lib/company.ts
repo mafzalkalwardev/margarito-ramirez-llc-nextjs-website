@@ -163,6 +163,13 @@ export const company = {
   ],
   smsProgram: {
     name: 'MARGARITO RAMIREZ LLC Customer Care and Support',
+    brandDisplayName: 'MARGARITO RAMIREZ LLC',
+    description:
+      'Customer-care text messages for IT support ticket updates, troubleshooting appointment coordination, requested service information, and direct support responses. No marketing or promotional messages are sent.',
+    messageFrequency: 'You may receive up to 8 messages per month. Message frequency varies.',
+    ratesDisclosure: 'Message and data rates may apply.',
+    helpInstructions: 'Reply HELP for help.',
+    stopInstructions: 'Reply STOP to opt out.',
     categories: [
       'IT service information',
       'Troubleshooting appointment coordination',

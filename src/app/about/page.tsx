@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { company } from '@/lib/company';
+import { BrandLogo } from '@/components/brand-logo';
 import { SectionHeading } from '@/components/section-heading';
 
 export const metadata: Metadata = {
@@ -13,12 +14,18 @@ export default function AboutPage() {
   return (
     <main>
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="mb-8">
+          <BrandLogo size={72} />
+        </div>
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
           About our company
         </p>
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-          Technology support grounded in clear communication.
+          {company.serviceBrand}
         </h1>
+        <p className="mt-3 text-xl font-medium text-slate-700">
+          Technology support grounded in clear communication.
+        </p>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
           {company.brandStatement} We are a {company.businessType}.
         </p>

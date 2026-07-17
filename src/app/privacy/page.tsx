@@ -56,6 +56,11 @@ export default function PrivacyPolicyPage() {
               text-messaging originator opt-in data and consent; this information will not be shared
               with any third parties. Mobile numbers and personal information are not sold or rented.
             </p>
+            <p className="mt-3">
+              For the {company.smsProgram.name} program: {company.smsProgram.messageFrequency}{' '}
+              {company.smsProgram.ratesDisclosure} {company.smsProgram.helpInstructions}{' '}
+              {company.smsProgram.stopInstructions}
+            </p>
           </section>
 
           <section>
@@ -81,20 +86,25 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-semibold text-slate-900">5. Service providers and disclosures</h2>
             <p className="mt-3">
-              We use hosting, security, email, and form-delivery providers to operate this website.
-              FormSubmit processes ordinary contact and service-request submissions for email
-              delivery; SMS consent and opt-out records are submitted to a separate FormSubmit endpoint
-              addressed to {company.emails.sms} and should be handled by a configured messaging
-              provider in production. We may also disclose information when required by law or
-              necessary to protect legitimate rights and safety.
+              We use hosting, security, email, form-delivery, and messaging providers to operate this
+              website and customer communications. Service providers process information only to
+              perform services on our behalf and are not authorized to use mobile opt-in data for their
+              own marketing. We may also disclose information when required by law or necessary to
+              protect legitimate rights and safety.
+            </p>
+            <p className="mt-3">
+              No mobile information will be shared with third parties or affiliates for marketing or
+              promotional purposes. Text-messaging originator opt-in data and consent will not be shared
+              with any third parties.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-slate-900">6. SMS choices</h2>
             <p className="mt-3">
-              Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP
-              for help. You may also use the{' '}
+              {company.smsProgram.messageFrequency} {company.smsProgram.ratesDisclosure}{' '}
+              {company.smsProgram.helpInstructions} {company.smsProgram.stopInstructions} You may also
+              use the{' '}
               <Link href="/sms-consent/" className="text-[var(--accent)]">
                 online opt-out form
               </Link>

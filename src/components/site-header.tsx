@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { company } from '@/lib/company';
+import { BrandLogo } from '@/components/brand-logo';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -37,20 +38,8 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3.5 lg:px-8">
-        <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--primary)] shadow-lg shadow-slate-950/10">
-            <span className="bg-gradient-to-br from-teal-200 to-teal-500 bg-clip-text text-base font-bold text-transparent">
-              MR
-            </span>
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate text-base font-semibold tracking-tight text-slate-950 sm:text-lg">
-              {company.serviceBrand}
-            </span>
-            <span className="mt-0.5 hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 sm:block">
-              Managed IT · Security · Helpdesk
-            </span>
-          </span>
+        <Link href="/" className="min-w-0">
+          <BrandLogo withWordmark size={42} />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
@@ -68,16 +57,10 @@ export function SiteHeader() {
           >
             Email Support
           </a>
-          <Link
-            href="/sms-consent/"
-            className={buttonVariants({ variant: 'ghost', size: 'sm' })}
-          >
+          <Link href="/sms-consent/" className={buttonVariants({ variant: 'ghost', size: 'sm' })}>
             Customer Care SMS
           </Link>
-          <Link
-            href="/support/"
-            className={buttonVariants({ variant: 'primary', size: 'sm' })}
-          >
+          <Link href="/support/" className={buttonVariants({ variant: 'primary', size: 'sm' })}>
             Request IT Support <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>

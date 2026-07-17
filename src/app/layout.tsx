@@ -20,15 +20,22 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(company.domain),
   title: company.seo.title,
   description: company.seo.description,
   keywords: [...company.seo.keywords],
+  icons: {
+    icon: [{ url: '/icon.png', type: 'image/png' }],
+    apple: [{ url: '/logo.png', type: 'image/png' }],
+    shortcut: '/logo.png',
+  },
   openGraph: {
     title: company.seo.title,
     description: company.seo.description,
     type: 'website',
     locale: 'en_US',
     url: company.domain,
+    images: [{ url: '/logo.png', width: 512, height: 512, alt: company.serviceBrand }],
   },
   alternates: {
     canonical: company.domain,

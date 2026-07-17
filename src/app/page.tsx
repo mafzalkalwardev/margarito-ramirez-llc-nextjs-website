@@ -8,6 +8,7 @@ import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 import { FaqAccordion } from '@/components/faq-accordion';
 import { HeroNetwork } from '@/components/hero-network';
+import { BrandLogo } from '@/components/brand-logo';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -49,6 +50,13 @@ export default function Home() {
             transition={{ duration: 0.55 }}
             className="max-w-3xl"
           >
+            <div className="mb-6 flex items-center gap-4">
+              <BrandLogo size={56} />
+              <div>
+                <p className="text-lg font-semibold text-white sm:text-xl">{company.serviceBrand}</p>
+                <p className="text-sm text-teal-100/80">{company.legalName}</p>
+              </div>
+            </div>
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-100/90">
               IT support for businesses and remote professionals
             </p>
@@ -277,7 +285,9 @@ export default function Home() {
               <li>• The consent box starts unchecked</li>
               <li>• Consent is not a condition of purchase</li>
               <li>• No marketing or promotional SMS</li>
-              <li>• STOP and HELP are supported</li>
+              <li>• {company.smsProgram.messageFrequency}</li>
+              <li>• {company.smsProgram.ratesDisclosure}</li>
+              <li>• {company.smsProgram.stopInstructions} {company.smsProgram.helpInstructions}</li>
             </ul>
             <Link
               href="/sms-consent/"

@@ -1,0 +1,39 @@
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import { company } from '@/lib/company';
+
+type BrandLogoProps = {
+  className?: string;
+  size?: number;
+  withWordmark?: boolean;
+  wordmarkClassName?: string;
+};
+
+export function BrandLogo({
+  className,
+  size = 40,
+  withWordmark = false,
+  wordmarkClassName,
+}: BrandLogoProps) {
+  return (
+    <span className={cn('inline-flex items-center gap-3', className)}>
+      <Image
+        src="/logo.png"
+        alt={`${company.serviceBrand} logo`}
+        width={size}
+        height={size}
+        className="rounded-xl shadow-sm ring-1 ring-slate-200/80"
+      />
+      {withWordmark ? (
+        <span className={cn('min-w-0', wordmarkClassName)}>
+          <span className="block truncate text-base font-semibold tracking-tight text-slate-950 sm:text-lg">
+            {company.serviceBrand}
+          </span>
+          <span className="mt-0.5 hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 sm:block">
+            Managed IT · Security · Helpdesk
+          </span>
+        </span>
+      ) : null}
+    </span>
+  );
+}

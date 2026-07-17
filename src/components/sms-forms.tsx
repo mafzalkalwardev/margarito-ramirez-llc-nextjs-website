@@ -4,13 +4,15 @@ import Link from 'next/link';
 import { company } from '@/lib/company';
 
 export function SmsConsentForm() {
+  const sms = company.smsProgram;
+
   return (
     <form action={company.formEndpoints.smsConsent} method="POST" className="space-y-5">
       <input type="hidden" name="_subject" value="SMS Consent Enrollment — Customer Care" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="form_type" value="sms_consent" />
-      <input type="hidden" name="program" value={company.smsProgram.name} />
+      <input type="hidden" name="program" value={sms.name} />
       <input type="hidden" name="disclosure_version" value={company.policyEffectiveDate} />
       <input type="hidden" name="source_url" value={`${company.domain}/sms-consent/`} />
       <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -65,13 +67,13 @@ export function SmsConsentForm() {
           <option value="" disabled>
             Select a category
           </option>
-          {company.smsProgram.categories.map((category) => (
+          {sms.categories.map((category) => (
             <option key={category}>{category}</option>
           ))}
         </select>
       </label>
 
-      <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-[var(--surface)] p-4 text-sm leading-7 text-slate-700">
+      <label className="flex items-start gap-3 rounded-2xl border border-teal-200 bg-teal-50/60 p-4 text-sm leading-7 text-slate-700">
         <input
           required
           type="checkbox"
@@ -81,12 +83,11 @@ export function SmsConsentForm() {
           defaultChecked={false}
         />
         <span>
-          By checking this box and submitting the form, you agree to receive recurring customer-care
-          text messages from {company.legalName} at the mobile number provided. {company.brandStatement}{' '}
-          Messages include IT support ticket updates, troubleshooting appointment coordination,
-          requested service information, and direct support responses. No marketing or promotional
-          messages are sent. Message frequency varies. Message and data rates may apply. Reply STOP
-          to opt out or HELP for help. Consent is not a condition of purchase. View our{' '}
+          By checking this box and submitting this form, I agree to receive recurring customer-care
+          text messages from <strong>{sms.brandDisplayName}</strong> at the mobile number provided.
+          Program: {sms.name}. {company.brandStatement} {sms.description} {sms.messageFrequency}{' '}
+          {sms.ratesDisclosure} {sms.helpInstructions} {sms.stopInstructions} Consent is not a
+          condition of purchase. View our{' '}
           <Link href="/terms/" className="font-medium text-[var(--accent)] underline-offset-2 hover:underline">
             Terms & Conditions
           </Link>
@@ -103,10 +104,9 @@ export function SmsConsentForm() {
       </label>
 
       <p className="text-sm leading-7 text-slate-500">
-        Entering a phone number does not create consent. Enrollment occurs only after you select the
-        separate checkbox and submit this form. SMS consent records are emailed to{' '}
-        {company.emails.sms} for processing; production messaging should use a configured customer-care
-        messaging provider separate from ordinary contact form delivery.
+        Entering a phone number alone does not create consent. Enrollment occurs only after you select
+        the separate unchecked checkbox and submit this form. Mobile information will not be shared
+        with third parties or affiliates for marketing or promotional purposes.
       </p>
 
       <button
@@ -139,10 +139,16 @@ export function SmsOptOutForm() {
       </label>
 
       <label className="flex items-start gap-3 text-sm leading-7 text-slate-700">
-        <input required type="checkbox" name="opt_out_confirmation" value="yes" className="mt-1.5 h-4 w-4 shrink-0" />
+        <input
+          required
+          type="checkbox"
+          name="opt_out_confirmation"
+          value="yes"
+          className="mt-1.5 h-4 w-4 shrink-0"
+        />
         <span>
           I confirm that I control this mobile number and want to stop customer-care text messages from{' '}
-          {company.legalName}.
+          {company.legalName}. You can also reply STOP to any message for the fastest removal.
         </span>
       </label>
 

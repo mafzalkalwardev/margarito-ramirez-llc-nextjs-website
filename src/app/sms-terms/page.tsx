@@ -54,8 +54,8 @@ export default function SmsTermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-slate-900">Frequency and charges</h2>
             <p className="mt-3">
-              Message frequency varies. Message and data rates may apply according to your mobile plan.
-              Carriers are not responsible for delayed or undelivered messages.
+              {company.smsProgram.messageFrequency} {company.smsProgram.ratesDisclosure} Carriers are
+              not responsible for delayed or undelivered messages.
             </p>
           </section>
 
