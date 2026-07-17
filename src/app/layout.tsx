@@ -6,6 +6,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { OrganizationJsonLd } from '@/components/json-ld';
 import { ScrollExperience } from '@/components/scroll-experience';
+import { absoluteUrl, createPageMetadata } from '@/lib/seo';
 
 const outfit = Outfit({
   variable: '--font-display',
@@ -19,26 +20,24 @@ const sourceSans = Source_Sans_3({
   weight: ['400', '500', '600', '700'],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(company.domain),
+const homeSeo = createPageMetadata({
   title: company.seo.title,
   description: company.seo.description,
-  keywords: [...company.seo.keywords],
+  path: '/',
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(company.siteUrl),
+  ...homeSeo,
+  applicationName: company.serviceBrand,
+  authors: [{ name: company.legalName, url: absoluteUrl('/') }],
+  creator: company.legalName,
+  publisher: company.legalName,
+  category: 'technology',
   icons: {
     icon: [{ url: '/icon.png', type: 'image/png' }],
     apple: [{ url: '/logo.png', type: 'image/png' }],
     shortcut: '/logo.png',
-  },
-  openGraph: {
-    title: company.seo.title,
-    description: company.seo.description,
-    type: 'website',
-    locale: 'en_US',
-    url: company.domain,
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: company.serviceBrand }],
-  },
-  alternates: {
-    canonical: company.domain,
   },
 };
 

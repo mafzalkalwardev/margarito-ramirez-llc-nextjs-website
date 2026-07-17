@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `Terms and Conditions | ${company.serviceBrand}`,
-  description: `Terms governing this website, IT service requests, and the ${company.legalName} customer-care messaging program.`,
-};
+  description: `Terms governing the ${company.serviceBrand} website, IT service requests, and the ${company.legalName} customer-care messaging program.`,
+  path: '/terms/',
+  keywords: ['terms and conditions', 'website terms', 'IT service terms'],
+});
 
 export default function TermsPage() {
   return (

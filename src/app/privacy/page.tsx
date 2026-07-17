@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `Privacy Policy | ${company.serviceBrand}`,
-  description: `How ${company.legalName} collects, uses, protects, and retains information through this website and customer communications.`,
-};
+  description: `Read how ${company.legalName} collects, uses, and protects information, including SMS privacy, non-sharing disclosures, and customer communication choices.`,
+  path: '/privacy/',
+  keywords: ['privacy policy', 'SMS privacy', 'mobile information non-sharing'],
+});
 
 export default function PrivacyPolicyPage() {
   return (

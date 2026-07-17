@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `Service Area | ${company.serviceBrand}`,
+export const metadata: Metadata = createPageMetadata({
+  title: `Service Area | Remote IT Support Across the United States | ${company.serviceBrand}`,
   description:
-    'Remote IT support across the United States. Availability is confirmed for each request.',
-};
+    'Margarito Ramirez IT Solutions provides remote-first IT support across the United States. Availability is confirmed for each request.',
+  path: '/service-area/',
+  keywords: ['remote IT support USA', 'nationwide IT support', 'service area'],
+});
 
 export default function ServiceAreaPage() {
   return (

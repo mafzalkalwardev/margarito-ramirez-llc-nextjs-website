@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/sitemap.xml

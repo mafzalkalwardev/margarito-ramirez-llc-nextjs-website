@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
 import { ContactForm } from '@/components/contact-form';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `Request IT Support | ${company.serviceBrand}`,
   description:
-    'Start an IT support request for managed IT, cybersecurity, or remote helpdesk assistance.',
-};
+    'Start an IT support request for managed IT, cybersecurity, or remote helpdesk assistance with Margarito Ramirez IT Solutions.',
+  path: '/support/',
+  keywords: ['request IT support', 'open support ticket', 'helpdesk request'],
+});
 
 export default function SupportPage() {
   return (

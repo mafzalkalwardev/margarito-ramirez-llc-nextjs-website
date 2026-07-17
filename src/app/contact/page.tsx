@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 import { ContactForm } from '@/components/contact-form';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `Contact | ${company.serviceBrand}`,
   description:
-    'Submit an IT support or service inquiry. This form does not enroll you in recurring text messages.',
-};
+    'Contact Margarito Ramirez IT Solutions for managed IT, cybersecurity, or remote helpdesk inquiries. This form does not enroll you in recurring text messages.',
+  path: '/contact/',
+  keywords: ['contact IT support', 'IT support request', 'customer service email'],
+});
 
 export default function ContactPage() {
   return (

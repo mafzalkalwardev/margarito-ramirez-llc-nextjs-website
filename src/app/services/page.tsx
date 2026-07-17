@@ -2,12 +2,15 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `IT Services | ${company.serviceBrand}`,
+export const metadata: Metadata = createPageMetadata({
+  title: `IT Services | Managed IT, Cybersecurity & Helpdesk | ${company.serviceBrand}`,
   description:
-    'Managed IT services, cybersecurity and threat protection, and remote helpdesk support across the United States.',
-};
+    'Explore managed IT services, cybersecurity and threat protection, and remote helpdesk support from Margarito Ramirez IT Solutions across the United States.',
+  path: '/services/',
+  keywords: ['managed IT services', 'cybersecurity services', 'remote helpdesk services'],
+});
 
 export default function ServicesPage() {
   return (

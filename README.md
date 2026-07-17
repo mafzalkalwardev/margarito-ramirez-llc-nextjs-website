@@ -8,7 +8,43 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/)
 
-[Live website](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/) · [Services](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/services/) · [Request support](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/support/)
+[Live website](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/) · [Services](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/services/) · [Request support](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/support/) · [Sitemap](https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/sitemap.xml)
+
+---
+
+## Live website screenshots
+
+Real captures from the production GitHub Pages deployment.
+
+### Homepage (desktop)
+
+![Margarito Ramirez IT Solutions homepage desktop screenshot](docs/screenshots/home-desktop.png)
+
+### Homepage (mobile)
+
+![Margarito Ramirez IT Solutions homepage mobile screenshot](docs/screenshots/home-mobile.png)
+
+### Services
+
+![Services page desktop screenshot](docs/screenshots/services-desktop.png)
+
+### About
+
+![About page desktop screenshot](docs/screenshots/about-desktop.png)
+
+### SMS Consent
+
+![SMS consent page desktop screenshot](docs/screenshots/sms-consent-desktop.png)
+
+### Support request
+
+![Support request page desktop screenshot](docs/screenshots/support-desktop.png)
+
+Refresh screenshots anytime with:
+
+```bash
+npm run screenshots
+```
 
 ---
 
@@ -31,12 +67,31 @@ The content avoids invented guarantees and makes service scope, support hours, l
 - GSAP + ScrollTrigger reveals, parallax, staggered sections, and reading progress
 - shadcn-style local UI primitives powered by CVA, `clsx`, and `tailwind-merge`
 - Continuous capability scroller and responsive mobile navigation
-- Shared site header, footer, metadata, and organization JSON-LD
+- Shared site header, footer, metadata, Open Graph, Twitter cards, and JSON-LD
+- SEO sitemap, robots.txt, canonical URLs, and FAQ schema
 - Dedicated support, service area, FAQ, privacy, terms, and SMS pages
-- Separate contact and SMS consent flows
+- Separate contact and SMS consent flows (Twilio/Vonage-friendly disclosures)
 - Accessible focus states, semantic structure, and responsive layouts
 - Static export optimized for GitHub Pages
-- Custom SVG logo and browser-tab icon
+- Custom brand logo and browser-tab icon
+
+## SEO
+
+| Item | Status |
+| --- | --- |
+| Unique titles + descriptions per route | Yes |
+| Canonical URLs | Yes |
+| Open Graph + Twitter cards | Yes (`public/og-image.png`) |
+| `robots.txt` | Yes |
+| `sitemap.xml` | Yes |
+| Organization / ProfessionalService / WebSite JSON-LD | Yes |
+| FAQPage schema | Yes (`/faq/`) |
+| Semantic headings + brand keywords | Yes |
+
+Production SEO entry points:
+
+- https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/robots.txt
+- https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/sitemap.xml
 
 ## Tech stack
 
@@ -52,6 +107,7 @@ The content avoids invented guarantees and makes service scope, support hours, l
 | Radix UI | Accessible FAQ accordion behavior |
 | Lucide React | Consistent interface iconography |
 | FormSubmit | Static-host-compatible form delivery |
+| Playwright | Live website screenshot capture for README docs |
 | GitHub Pages | Production hosting |
 
 ## Routes
@@ -74,16 +130,25 @@ The content avoids invented guarantees and makes service scope, support hours, l
 
 ```text
 public/
-  logo.svg                       Brand mark
+  logo.png / logo.svg            Brand mark
+  og-image.png                   Social share preview
+  robots.txt                     Crawler rules
+  sitemap.xml                    Indexable routes
+docs/
+  screenshots/                   Live production screenshots
+  prd.md                         Product requirements
+scripts/
+  capture-screenshots.cjs        Playwright screenshot script
 src/
   app/
     */page.tsx                   Static-exported routes
     globals.css                  Design tokens and global motion
-    icon.svg                     Browser-tab icon
+    icon.png                     Browser-tab icon
     layout.tsx                   Shared metadata and site chrome
     page.tsx                     Animated homepage
   components/
     ui/                          shadcn-style UI primitives
+    brand-logo.tsx               Shared logo component
     contact-form.tsx             General support/contact workflow
     hero-network.tsx             Framer Motion hero visualization
     scroll-experience.tsx        GSAP ScrollTrigger system
@@ -92,9 +157,8 @@ src/
     sms-forms.tsx                Separate SMS consent and opt-out
   lib/
     company.ts                   Company and content source of truth
+    seo.ts                       Metadata helpers
     utils.ts                     Class-name utility
-docs/
-  prd.md                         Product requirements
 ```
 
 ## Quick start
@@ -123,11 +187,12 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run dev` | Start the local Next.js development server |
 | `npm run lint` | Run ESLint |
 | `npm run build` | Type-check and create the static production export |
+| `npm run screenshots` | Capture live production screenshots for the README |
 | `npm run deploy` | Build and publish `out/` to the `gh-pages` branch |
 
 ## Configuration
 
-Company identity, services, FAQ content, policy date, emails, and form endpoints are centralized in:
+Company identity, services, FAQ content, policy date, emails, live site URL, and form endpoints are centralized in:
 
 ```text
 src/lib/company.ts
@@ -169,6 +234,7 @@ https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/
 | GitHub repository | https://github.com/mafzalkalwardev/margarito-ramirez-llc-nextjs-website |
 | Live website | https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/ |
 | Product requirements | [docs/prd.md](docs/prd.md) |
+| Screenshots | [docs/screenshots](docs/screenshots) |
 
 ## Legal note
 

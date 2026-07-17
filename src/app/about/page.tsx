@@ -3,12 +3,15 @@ import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { BrandLogo } from '@/components/brand-logo';
 import { SectionHeading } from '@/components/section-heading';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: `About | ${company.serviceBrand}`,
+export const metadata: Metadata = createPageMetadata({
+  title: `About ${company.serviceBrand} | ${company.legalName}`,
   description:
-    'Learn about Margarito Ramirez IT Solutions — the IT-support service brand of MARGARITO RAMIREZ LLC.',
-};
+    'Learn about Margarito Ramirez IT Solutions, the IT-support service brand of MARGARITO RAMIREZ LLC, including entity details, purpose, and California and Texas locations.',
+  path: '/about/',
+  keywords: ['about Margarito Ramirez', 'California LLC IT support', 'Sherman Oaks IT company'],
+});
 
 export default function AboutPage() {
   return (

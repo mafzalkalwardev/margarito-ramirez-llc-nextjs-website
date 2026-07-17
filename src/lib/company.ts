@@ -17,22 +17,29 @@ export const company = {
     sms: 'sms@margaritoramirezllc.com',
   },
   domain: 'https://margaritoramirezllc.com',
+  siteUrl: 'https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website',
   businessHours: 'Monday–Friday, 8:00 AM–6:00 PM Central Time; closed weekends',
   supportRegion: 'United States',
   tagline: 'Dependable service. Clear communication.',
   brandStatement:
     'Margarito Ramirez IT Solutions is the IT-support service brand of MARGARITO RAMIREZ LLC.',
   seo: {
-    title: 'Margarito Ramirez IT Solutions | Dependable Service. Clear Communication.',
+    title: 'Margarito Ramirez IT Solutions | Managed IT, Cybersecurity & Remote Helpdesk',
     description:
-      'Managed IT, cybersecurity support, and remote helpdesk assistance for small businesses, professional offices, and remote professionals across the United States.',
+      'Margarito Ramirez IT Solutions provides managed IT services, cybersecurity support, and remote helpdesk assistance for small businesses, professional offices, and remote professionals across the United States.',
     keywords: [
       'managed IT services',
       'cybersecurity support',
       'remote helpdesk',
-      'IT support',
-      'small business IT',
+      'IT support company',
+      'small business IT support',
+      'network monitoring',
+      'device management',
+      'data backup planning',
       'Margarito Ramirez IT Solutions',
+      'MARGARITO RAMIREZ LLC',
+      'Sherman Oaks IT support',
+      'remote IT support United States',
     ],
   },
   services: [

@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { company } from '@/lib/company';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `SMS Terms | ${company.serviceBrand}`,
-  description: `Terms for the ${company.legalName} Customer Care and Support messaging program.`,
-};
+  description: `SMS terms for the ${company.legalName} Customer Care and Support messaging program, including frequency, STOP/HELP, and enrollment rules.`,
+  path: '/sms-terms/',
+  keywords: ['SMS terms', 'text messaging terms', 'customer care SMS'],
+});
 
 export default function SmsTermsPage() {
   return (

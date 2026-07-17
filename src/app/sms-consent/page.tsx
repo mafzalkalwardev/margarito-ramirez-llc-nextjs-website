@@ -3,12 +3,15 @@ import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 import { SmsConsentForm, SmsOptOutForm } from '@/components/sms-forms';
 import { SmsDisclosureCard } from '@/components/sms-disclosure-card';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: `SMS Consent & Opt-Out | ${company.serviceBrand}`,
   description:
-    'Affirmatively choose whether to receive recurring IT support text messages from MARGARITO RAMIREZ LLC. Consent is not a condition of purchase.',
-};
+    'Affirmatively enroll in or opt out of MARGARITO RAMIREZ LLC Customer Care SMS. Consent starts unchecked and is never a condition of purchase.',
+  path: '/sms-consent/',
+  keywords: ['SMS consent', 'customer care text messages', 'SMS opt out'],
+});
 
 export default function SmsConsentPage() {
   const sms = company.smsProgram;
