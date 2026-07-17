@@ -63,6 +63,7 @@ The content avoids invented guarantees and makes service scope, support hours, l
 ## Highlights
 
 - Modern brand-first interface with a responsive animated hero
+- Professional red brand palette with matching logo and accents
 - Framer Motion interactions and reduced-motion support
 - GSAP + ScrollTrigger reveals, parallax, staggered sections, and reading progress
 - shadcn-style local UI primitives powered by CVA, `clsx`, and `tailwind-merge`
