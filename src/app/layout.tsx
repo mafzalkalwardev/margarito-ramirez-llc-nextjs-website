@@ -35,9 +35,12 @@ export const metadata: Metadata = {
   publisher: company.legalName,
   category: 'technology',
   icons: {
-    icon: [{ url: '/icon.png', type: 'image/png' }],
-    apple: [{ url: '/logo.png', type: 'image/png' }],
-    shortcut: '/logo.png',
+    icon: [
+      { url: absoluteUrl('/logo.svg'), type: 'image/svg+xml' },
+      { url: absoluteUrl('/icon.png'), type: 'image/png' },
+    ],
+    apple: [{ url: absoluteUrl('/logo.png'), type: 'image/png' }],
+    shortcut: absoluteUrl('/logo.svg'),
   },
 };
 

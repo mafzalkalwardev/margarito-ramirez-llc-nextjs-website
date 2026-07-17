@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { company } from '@/lib/company';
+import { withBasePath } from '@/lib/paths';
 
 type BrandLogoProps = {
   className?: string;
@@ -18,11 +19,12 @@ export function BrandLogo({
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
       <Image
-        src="/logo.png"
+        src={withBasePath('/logo.svg')}
         alt={`${company.serviceBrand} logo`}
         width={size}
         height={size}
-        className="rounded-xl shadow-sm ring-1 ring-slate-200/80"
+        unoptimized
+        className="rounded-xl shadow-sm ring-1 ring-slate-200/80 bg-[var(--primary)]"
       />
       {withWordmark ? (
         <span className={cn('min-w-0', wordmarkClassName)}>

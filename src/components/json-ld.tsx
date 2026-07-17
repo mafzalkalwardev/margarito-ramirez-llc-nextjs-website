@@ -2,7 +2,7 @@ import { company } from '@/lib/company';
 import { absoluteUrl } from '@/lib/seo';
 
 export function OrganizationJsonLd() {
-  const logoUrl = absoluteUrl('/logo.png');
+  const logoUrl = absoluteUrl('/logo.svg');
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
