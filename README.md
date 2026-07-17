@@ -39,12 +39,19 @@ Open http://localhost:3000 to view the site locally.
 ## Build and Deploy
 
 ```bash
+npm install
 npm run build
 npm run deploy
 ```
 
-The deployment target is GitHub Pages.
+This site is statically exported and published to GitHub Pages from the `gh-pages` branch.
 
 ## Live Site
 
 https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/
+
+## Notes
+
+- The site uses a production-only `basePath` and `assetPrefix` so local development remains clean.
+- The `gh-pages` deployment includes dotfiles and a `.nojekyll` file to preserve static Next.js output.
+- A branded `logo.svg` is included as a shortcut icon in the site metadata.

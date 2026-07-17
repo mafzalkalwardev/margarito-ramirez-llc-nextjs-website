@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: company.seo.title,
   description: company.seo.description,
   keywords: company.seo.keywords,
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/logo.svg',
+  },
   openGraph: {
     title: company.seo.title,
     description: company.seo.description,

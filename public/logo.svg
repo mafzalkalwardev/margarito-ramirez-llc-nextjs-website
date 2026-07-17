@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Margarito Ramirez LLC logo">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="#0F172A" />
+  <path d="M48 176h160v24a16 16 0 0 1-16 16H64a16 16 0 0 1-16-16v-24Z" fill="#fff" opacity="0.08" />
+  <path d="M52 164h152v-24a16 16 0 0 0-16-16H68a16 16 0 0 0-16 16v24Z" fill="url(#grad)" />
+  <path d="M72 108h80v12H72zm0 28h52v12H72z" fill="#fff" opacity="0.9" />
+  <path d="M152 108h16v24h-16zM112 88h56v16h-56z" fill="#fff" opacity="0.9" />
+  <text x="50%" y="212" fill="#fff" font-family="Inter, sans-serif" font-size="36" font-weight="700" text-anchor="middle" letter-spacing="0.02em">MR</text>
+</svg>
