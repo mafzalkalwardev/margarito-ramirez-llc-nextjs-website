@@ -1,12 +1,12 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Margarito Ramirez IT Solutions logo">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2DD4BF" />
-      <stop offset="100%" stop-color="#0F766E" />
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="100%" stop-color="#B91C1C" />
     </linearGradient>
   </defs>
-  <rect width="256" height="256" rx="56" fill="#07111F" />
-  <circle cx="128" cy="128" r="84" fill="none" stroke="#2DD4BF" stroke-opacity=".18" stroke-width="2" />
+  <rect width="256" height="256" rx="56" fill="#1A0A0A" />
+  <circle cx="128" cy="128" r="84" fill="none" stroke="#F87171" stroke-opacity=".22" stroke-width="2" />
   <path d="M65 164V86h25l38 42 38-42h25v78h-25v-42l-38 40-38-40v42H65Z" fill="url(#grad)" />
-  <circle cx="194" cy="61" r="14" fill="#99F6E4" />
+  <circle cx="194" cy="61" r="14" fill="#FECACA" />
 </svg>

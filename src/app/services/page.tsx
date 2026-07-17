@@ -85,7 +85,7 @@ export default function ServicesPage() {
           {company.pillars.map((pillar) => (
             <span
               key={pillar.title}
-              className="rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-sm font-medium text-teal-900"
+              className="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-900"
             >
               {pillar.title}
             </span>

@@ -84,7 +84,7 @@ export default function AboutPage() {
             <h3 className="text-2xl font-semibold">Locations</h3>
             <div className="mt-8 space-y-6">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-300">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red-300">
                   California
                 </p>
                 <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-300">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red-300">
                   Texas office
                 </p>
                 <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">

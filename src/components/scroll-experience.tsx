@@ -88,7 +88,7 @@ export function ScrollExperience() {
     <div
       ref={progressRef}
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-500"
+      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-gradient-to-r from-red-500 via-rose-400 to-red-600"
     />
   );
 }

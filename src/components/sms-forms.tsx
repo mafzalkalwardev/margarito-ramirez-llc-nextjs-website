@@ -73,7 +73,7 @@ export function SmsConsentForm() {
         </select>
       </label>
 
-      <label className="flex items-start gap-3 rounded-2xl border border-teal-200 bg-teal-50/60 p-4 text-sm leading-7 text-slate-700">
+      <label className="flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50/60 p-4 text-sm leading-7 text-slate-700">
         <input
           required
           type="checkbox"

@@ -33,7 +33,7 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero — brand-first, full-bleed visual */}
       <section className="relative isolate min-h-[760px] overflow-hidden border-b border-slate-800 bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_42%,rgba(13,148,136,0.27),transparent_35%),linear-gradient(115deg,rgba(7,17,31,0.98),rgba(7,17,31,0.82))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_42%,rgba(185,28,28,0.28),transparent_35%),linear-gradient(115deg,rgba(7,17,31,0.98),rgba(7,17,31,0.82))]" />
         <div className="ambient-grid absolute inset-0 opacity-60" />
         <div
           data-gsap-parallax
@@ -54,15 +54,15 @@ export default function Home() {
               <BrandLogo size={56} />
               <div>
                 <p className="text-lg font-semibold text-white sm:text-xl">{company.serviceBrand}</p>
-                <p className="text-sm text-teal-100/80">{company.legalName}</p>
+                <p className="text-sm text-red-100/80">{company.legalName}</p>
               </div>
             </div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-100/90">
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-red-100/90">
               IT support for businesses and remote professionals
             </p>
             <h1 className="text-balance mt-5 text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
               Technology that works.
-              <span className="block bg-gradient-to-r from-teal-200 via-cyan-200 to-teal-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-red-200 via-rose-200 to-red-400 bg-clip-text text-transparent">
                 Support you can reach.
               </span>
             </h1>
@@ -200,8 +200,8 @@ export default function Home() {
               whileHover={{ y: -6 }}
               className="h-full"
             >
-              <Card className="group relative h-full overflow-hidden transition-shadow duration-300 hover:shadow-[0_30px_80px_rgba(15,118,110,0.13)]">
-                <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-teal-400 to-cyan-300 transition-transform duration-500 group-hover:scale-x-100" />
+              <Card className="group relative h-full overflow-hidden transition-shadow duration-300 hover:shadow-[0_30px_80px_rgba(185,28,28,0.14)]">
+                <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-red-500 to-rose-400 transition-transform duration-500 group-hover:scale-x-100" />
                 <CardHeader>
                   <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
                     {service.number}
@@ -230,7 +230,7 @@ export default function Home() {
       {/* Pillars */}
       <section className="border-y border-slate-200 bg-slate-950 py-24 text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-300">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-red-300">
             Built around operational reality
           </p>
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold sm:text-4xl">
@@ -298,7 +298,7 @@ export default function Home() {
           </div>
           <div className="rounded-[32px] border border-slate-200 bg-[var(--background)] p-8">
             <div className="rounded-[24px] bg-[var(--primary)] p-6 text-white shadow-xl">
-              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-teal-300">
+              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-red-300">
                 <MessageSquare className="h-4 w-4" /> Customer Care SMS
               </div>
               <p className="mt-5 text-base leading-8 text-slate-100">
@@ -359,8 +359,8 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="rounded-[36px] bg-[linear-gradient(135deg,#0b1220,#0f766e)] p-8 text-white lg:p-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-200">
+        <div className="rounded-[36px] bg-[linear-gradient(135deg,#1a0a0a,#b91c1c)] p-8 text-white lg:p-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-red-200">
             Let’s solve the next technology issue
           </p>
           <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Ready for clearer IT support?</h2>
@@ -370,7 +370,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/support/"
-              className="inline-flex items-center justify-center rounded-full bg-teal-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-200"
+              className="inline-flex items-center justify-center rounded-full bg-red-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-red-200"
             >
               Start a Support Request
             </Link>
@@ -393,7 +393,7 @@ export default function Home() {
       <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
         <a
           href={`mailto:${company.emails.support}`}
-          className="inline-flex items-center gap-2 rounded-full bg-teal-400 px-4 py-3 text-sm font-semibold text-slate-950 shadow-lg transition hover:scale-[1.02]"
+          className="inline-flex items-center gap-2 rounded-full bg-red-400 px-4 py-3 text-sm font-semibold text-slate-950 shadow-lg transition hover:scale-[1.02]"
         >
           <Mail className="h-4 w-4" /> Email Support
         </a>

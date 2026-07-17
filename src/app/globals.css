@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #f5f8fb;
-  --foreground: #07111f;
+  --background: #faf7f7;
+  --foreground: #1a0f0f;
   --surface: #ffffff;
-  --primary: #07111f;
-  --accent: #0f766e;
-  --accent-bright: #5eead4;
-  --accent-soft: #ccfbf1;
-  --muted: #64748b;
-  --border: #dce5ec;
+  --primary: #1a0a0a;
+  --accent: #b91c1c;
+  --accent-bright: #f87171;
+  --accent-soft: #fee2e2;
+  --muted: #6b7280;
+  --border: #e8dede;
 }
 
 @theme inline {
@@ -44,8 +44,8 @@ h6 {
 }
 
 ::selection {
-  background: rgba(15, 118, 110, 0.22);
-  color: #0f172a;
+  background: rgba(185, 28, 28, 0.22);
+  color: #1a0f0f;
 }
 
 *:focus-visible {

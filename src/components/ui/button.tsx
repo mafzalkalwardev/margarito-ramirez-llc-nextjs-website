@@ -8,12 +8,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-[var(--primary)] text-white shadow-[0_10px_30px_rgba(7,17,31,0.18)] hover:-translate-y-0.5 hover:bg-[var(--accent)] hover:shadow-[0_14px_36px_rgba(13,148,136,0.25)]',
+          'bg-[var(--primary)] text-white shadow-[0_10px_30px_rgba(26,10,10,0.2)] hover:-translate-y-0.5 hover:bg-[var(--accent)] hover:shadow-[0_14px_36px_rgba(185,28,28,0.28)]',
         accent:
-          'bg-[var(--accent-bright)] text-slate-950 shadow-[0_10px_30px_rgba(45,212,191,0.22)] hover:-translate-y-0.5 hover:bg-teal-300',
+          'bg-[var(--accent-bright)] text-slate-950 shadow-[0_10px_30px_rgba(248,113,113,0.28)] hover:-translate-y-0.5 hover:bg-red-300',
         outline:
           'border border-slate-300 bg-white/70 text-slate-800 backdrop-blur hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]',
-        ghost: 'text-slate-700 hover:bg-slate-100 hover:text-[var(--accent)]',
+        ghost: 'text-slate-700 hover:bg-red-50 hover:text-[var(--accent)]',
         glass:
           'border border-white/20 bg-white/10 text-white backdrop-blur-md hover:-translate-y-0.5 hover:bg-white/20',
       },
