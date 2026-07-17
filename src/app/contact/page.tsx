@@ -1,40 +1,72 @@
+import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
+import { ContactForm } from '@/components/contact-form';
 
-export const metadata = {
-  title: 'Contact | Margarito Ramirez LLC',
-  description: 'Contact Margarito Ramirez LLC for dispatch support, carrier onboarding, and freight consultation.',
+export const metadata: Metadata = {
+  title: `Contact | ${company.serviceBrand}`,
+  description:
+    'Submit an IT support or service inquiry. This form does not enroll you in recurring text messages.',
 };
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-900">
-      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <main>
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+          Contact IT support
+        </p>
+        <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          Tell us how we can help.
+        </h1>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+          Submit an IT support or service inquiry. This form does not enroll you in recurring text
+          messages.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <SectionHeading eyebrow="Contact" title="Let’s talk about your next lane." description="Whether you are onboarding a new carrier setup or evaluating dispatch support, the team is ready to help." />
-            <div className="mt-8 space-y-5 text-sm leading-7 text-slate-600">
-              <p><strong>Business:</strong> {company.name}</p>
-              <p><strong>Phone:</strong> {company.phone}</p>
-              <p><strong>Email:</strong> {company.email}</p>
-              <p><strong>California Address:</strong> {company.californiaAddress}</p>
-              <p><strong>Texas Office:</strong> {company.texasOffice}</p>
+            <SectionHeading
+              eyebrow="Company contact"
+              title={company.legalName}
+              description={`${company.serviceBrand} service brand`}
+            />
+            <div className="mt-8 space-y-4 text-sm leading-7 text-slate-600">
+              <p>
+                <a className="font-medium text-[var(--accent)]" href={`mailto:${company.emails.support}`}>
+                  {company.emails.support}
+                </a>
+              </p>
+              <p>
+                <a className="font-medium text-[var(--accent)]" href={`mailto:${company.emails.service}`}>
+                  {company.emails.service}
+                </a>
+              </p>
+              <p>
+                <strong>Support hours</strong>
+                <br />
+                {company.businessHours}
+              </p>
+              <p>
+                <strong>California</strong>
+                <br />
+                <span className="whitespace-pre-line">{company.californiaAddress}</span>
+              </p>
+              <p>
+                <strong>Texas office</strong>
+                <br />
+                <span className="whitespace-pre-line">{company.texasOffice}</span>
+              </p>
+              <p className="rounded-2xl bg-[var(--background)] p-4 text-slate-500">
+                Separate SMS choice: Contacting us here does not enroll you in recurring texts.
+                Customer-care SMS requires a separate affirmative consent form.
+              </p>
             </div>
           </div>
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <form className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="text-sm font-medium text-slate-700">Name<input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-                <label className="text-sm font-medium text-slate-700">Phone<input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-              </div>
-              <label className="text-sm font-medium text-slate-700">Email<input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="text-sm font-medium text-slate-700">Truck Type<input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-                <label className="text-sm font-medium text-slate-700">MC Number<input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-              </div>
-              <label className="text-sm font-medium text-slate-700">Message<textarea className="mt-2 min-h-32 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" /></label>
-              <button className="inline-flex items-center rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E3A8A]">Submit Request</button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>

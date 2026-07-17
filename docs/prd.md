@@ -1,78 +1,77 @@
-# PRD: Margarito Ramirez LLC Truck Dispatch Website
+# PRD: Margarito Ramirez IT Solutions Website
 
 ## 1. Product Overview
-Margarito Ramirez LLC needs a premium, conversion-focused website that presents the company as a professional truck dispatch partner for owner-operators and small fleets. The website should feel credible, modern, and high-end without appearing templated or generic.
+MARGARITO RAMIREZ LLC needs a premium, conversion-focused website for **Margarito Ramirez IT Solutions**, its IT-support service brand. The site presents managed IT, cybersecurity support, and remote helpdesk assistance for small businesses, professional offices, and remote professionals — not trucking or dispatch.
 
 ## 2. Primary Goals
-- Generate qualified truck carrier leads.
-- Build trust through clarity, professionalism, and evidence-based messaging.
-- Make it easy for visitors to contact the company for dispatch support.
-- Showcase services, industry coverage, and operational reliability.
+- Generate qualified IT support inquiries.
+- Build trust through clear scope, plain language, and no invented promises.
+- Separate general contact from Customer Care SMS enrollment (TCPA-friendly).
+- Make it easy to request support via form or email.
 
 ## 3. Target Audience
-- Owner-operators seeking steady, profitable freight.
-- Small fleet owners looking for dependable dispatch support.
-- Carriers who want help with negotiation, planning, and paperwork.
+- Small and medium-sized businesses
+- Local professional offices
+- Independent remote professionals and distributed teams
 
 ## 4. Brand Direction
-- Premium and corporate, not flashy.
-- Clean, modern layout with generous spacing.
-- Trustworthy logistics language and clear calls to action.
-- Visual direction grounded in trucking operations and professional logistics.
+- Calm, professional IT-support feel (deep slate + teal accent)
+- Brand-first hero; full-bleed technology/support imagery
+- Clear communication; no MSP hype or fake stats
+- Distinguish legal entity vs service brand on About, footer, and legal pages
 
 ## 5. Core Pages
 - Home
 - About
 - Services
-- Dispatch Services
-- Truck Types
-- FAQ
 - Contact
+- Support request
+- Service Area
+- SMS Consent (+ opt-out)
+- FAQ
 - Privacy Policy
-- Terms
-- Carrier Setup
+- Terms and Conditions
+- SMS Terms
 
 ## 6. Core Sections on Home
-- Hero with strong headline and CTA
-- About story and trust points
-- Services grid
-- Why choose us
-- How it works
-- Truck types and industries served
-- Benefits and ROI-focused messaging
-- Testimonials
-- Contact CTA and quote form
+- Hero with brand, headline, CTAs
+- Trust / company strip (legal name, entity #, hours, region)
+- Services teaser and capabilities
+- Value + Connect → Diagnose → Resolve
+- Core services detail
+- Security & support pillars
+- Request → Confirm → Assess → Coordinate → Support
+- SMS education block
+- Service area teaser
+- FAQ
+- Final CTA
 
 ## 7. Functional Requirements
-- Sticky navigation
-- Smooth scrolling
-- Subtle motion and transitions
-- Animated counters
+- Shared sticky header and footer on all pages
+- Contact form via FormSubmit to support@ (does not enroll SMS)
+- SMS consent/opt-out via separate FormSubmit endpoint to sms@
 - FAQ accordion
-- Floating call and quote buttons
-- Back to top button
+- Floating email / request CTAs on home
+- Back to top
 - Responsive and accessible interface
-- SEO metadata and local business schema
-- Centralized editable company configuration
+- SEO metadata and Organization / ProfessionalService JSON-LD
+- Centralized company configuration in `src/lib/company.ts`
+- Static export for GitHub Pages
 
 ## 8. Content Requirements
-- Use authentic trucking language.
-- Keep copy concise, confident, and conversion-oriented.
-- Avoid exaggerated claims and fluff.
-- Include placeholders for logo, photos, testimonials, and contact details.
+- Concise, confident IT support copy
+- No fake stats, invented testimonials, or freight/dispatch language
+- Full Privacy, Terms, and SMS Terms with SMS privacy clauses
 
 ## 9. Technical Requirements
-- Next.js 15
-- React 19
-- TypeScript
+- Next.js (App Router) + React + TypeScript
 - Tailwind CSS
 - Framer Motion
 - Lucide Icons
-- React Hook Form + Zod
-- SEO metadata and schema markup
+- FormSubmit for static form delivery
 
 ## 10. Success Metrics
-- Increased inbound calls and dispatch inquiries
-- Strong engagement on service pages
-- Solid page speed and Lighthouse performance
-- Clear trust signals and higher conversion from key CTA areas
+- Increased inbound support inquiries
+- Clear SMS consent separation
+- Strong page speed and mobile usability
+- Trust signals: entity details, hours, clear scope

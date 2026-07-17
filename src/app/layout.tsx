@@ -1,42 +1,50 @@
 import type { Metadata } from 'next';
-import { Poppins, Inter } from 'next/font/google';
+import { Outfit, Source_Sans_3 } from 'next/font/google';
 import './globals.css';
 import { company } from '@/lib/company';
+import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
+import { OrganizationJsonLd } from '@/components/json-ld';
+import { ScrollExperience } from '@/components/scroll-experience';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
-  weight: ['400', '500', '600', '700'],
+const outfit = Outfit({
+  variable: '--font-display',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
-const inter = Inter({
-  variable: '--font-inter',
+const sourceSans = Source_Sans_3({
+  variable: '--font-body',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
   title: company.seo.title,
   description: company.seo.description,
-  keywords: company.seo.keywords,
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/logo.svg',
-  },
+  keywords: [...company.seo.keywords],
   openGraph: {
     title: company.seo.title,
     description: company.seo.description,
     type: 'website',
     locale: 'en_US',
+    url: company.domain,
   },
   alternates: {
-    canonical: 'https://margaritoramirezllc.com',
+    canonical: company.domain,
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[#F8FAFC] text-slate-900">{children}</body>
+    <html lang="en" className={`${outfit.variable} ${sourceSans.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-[var(--background)] text-slate-900">
+        <OrganizationJsonLd />
+        <ScrollExperience />
+        <SiteHeader />
+        <div className="flex-1">{children}</div>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

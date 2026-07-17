@@ -1,14 +1,13 @@
-<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Margarito Ramirez LLC logo">
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Margarito Ramirez IT Solutions logo">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0F172A" />
-      <stop offset="100%" stop-color="#F59E0B" />
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0F766E" />
     </linearGradient>
   </defs>
-  <rect width="256" height="256" rx="48" fill="#0F172A" />
-  <path d="M48 176h160v24a16 16 0 0 1-16 16H64a16 16 0 0 1-16-16v-24Z" fill="#fff" opacity="0.08" />
-  <path d="M52 164h152v-24a16 16 0 0 0-16-16H68a16 16 0 0 0-16 16v24Z" fill="url(#grad)" />
-  <path d="M72 108h80v12H72zm0 28h52v12H72z" fill="#fff" opacity="0.9" />
-  <path d="M152 108h16v24h-16zM112 88h56v16h-56z" fill="#fff" opacity="0.9" />
-  <text x="50%" y="212" fill="#fff" font-family="Inter, sans-serif" font-size="36" font-weight="700" text-anchor="middle" letter-spacing="0.02em">MR</text>
+  <rect width="256" height="256" rx="56" fill="#07111F" />
+  <circle cx="128" cy="128" r="84" fill="none" stroke="#2DD4BF" stroke-opacity=".18" stroke-width="2" />
+  <circle cx="128" cy="128" r="62" fill="none" stroke="#99F6E4" stroke-opacity=".24" stroke-width="2" stroke-dasharray="7 9" />
+  <path d="M65 164V86h25l38 42 38-42h25v78h-25v-42l-38 40-38-40v42H65Z" fill="url(#grad)" />
+  <circle cx="194" cy="61" r="14" fill="#99F6E4" />
 </svg>

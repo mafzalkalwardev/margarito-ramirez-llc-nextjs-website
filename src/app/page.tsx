@@ -2,429 +2,409 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowRight, Phone, ShieldCheck, TrendingUp, Clock3, MapPin, CheckCircle2, MessageCircle, ChevronUp, PhoneCall } from 'lucide-react';
+import { ArrowRight, ChevronUp, Mail, MessageSquare, Shield, Network, HardDrive, Headphones } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 import { FaqAccordion } from '@/components/faq-accordion';
+import { HeroNetwork } from '@/components/hero-network';
+import { buttonVariants } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const stats = [
-  { value: '500+', label: 'Loads Managed' },
-  { value: '98%', label: 'Customer Satisfaction' },
-  { value: '24/7', label: 'Support' },
-  { value: '50 States', label: 'Coverage' },
+const trustChips = [
+  { title: 'No invented promises', detail: 'Clear service scope' },
+  { title: 'Customer Care SMS', detail: 'No promotional texts' },
 ];
 
-const values = [
-  'Professional dispatchers',
-  'Higher paying loads',
-  'Fast communication',
-  'No forced dispatch',
-  'Personal account manager',
-  'Reliable broker network',
-];
-
-const services = [
-  'Truck Dispatch',
-  'Dedicated Dispatcher',
-  'Rate Negotiation',
-  'Load Planning',
-  'Broker Communication',
-  'Factoring Assistance',
-  'Paperwork Management',
-  '24/7 Driver Support',
-  'DOT Compliance Assistance',
-  'Route Optimization',
-];
-
-const industries = ['Dry Van', 'Flatbed', 'Power Only', 'Reefer', 'Hotshot', 'Box Truck', 'Step Deck', 'Car Hauler'];
-
-const benefits = [
-  'Reduce empty miles',
-  'Maximize weekly revenue',
-  'Less time searching loads',
-  'Better broker relationships',
-  'Professional negotiation',
-  'Focus on driving',
-];
+const capabilityIcons = [Shield, Network, HardDrive, Headphones];
 
 export default function Home() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveTestimonial((current) => (current + 1) % company.testimonials.length);
-    }, 5000);
-
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 480);
-    };
-
+    const handleScroll = () => setShowBackToTop(window.scrollY > 480);
     handleScroll();
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.clearInterval(interval);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-900">
-      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link href="/" className="text-lg font-semibold tracking-[0.22em] text-slate-900">
-            {company.name}
-          </Link>
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-            <Link href="#about" className="transition hover:text-[#0F172A]">About</Link>
-            <Link href="#services" className="transition hover:text-[#0F172A]">Services</Link>
-            <Link href="#faq" className="transition hover:text-[#0F172A]">FAQ</Link>
-            <Link href="#contact" className="transition hover:text-[#0F172A]">Contact</Link>
-          </nav>
-          <div className="flex items-center gap-3">
-            <a href="tel:8185550147" className="hidden rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#1E3A8A] hover:text-[#1E3A8A] sm:inline-flex">
-              Call Now
-            </a>
-            <a href="#contact" className="inline-flex items-center rounded-full bg-[#0F172A] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#1E3A8A]">
-              Request Dispatch
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <section className="relative overflow-hidden border-b border-slate-200 bg-slate-950">
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(15,23,42,0.96),rgba(30,58,138,0.7))]" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517048676731-3a4f0f0bff9a?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center opacity-30" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-32">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-2xl">
-            <p className="mb-5 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.3em] text-slate-100">
-              Professional Truck Dispatch Services
+    <main className="min-h-screen">
+      {/* Hero — brand-first, full-bleed visual */}
+      <section className="relative isolate min-h-[760px] overflow-hidden border-b border-slate-800 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_42%,rgba(13,148,136,0.27),transparent_35%),linear-gradient(115deg,rgba(7,17,31,0.98),rgba(7,17,31,0.82))]" />
+        <div className="ambient-grid absolute inset-0 opacity-60" />
+        <div
+          data-gsap-parallax
+          className="absolute inset-0 scale-110 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80')",
+          }}
+        />
+        <div className="relative mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="max-w-3xl"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-100/90">
+              IT support for businesses and remote professionals
             </p>
-            <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Move More Freight. Earn More Revenue.
+            <h1 className="text-balance mt-5 text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
+              Technology that works.
+              <span className="block bg-gradient-to-r from-teal-200 via-cyan-200 to-teal-400 bg-clip-text text-transparent">
+                Support you can reach.
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-200 sm:text-xl">
-              Professional truck dispatch services helping owner-operators and small fleets stay loaded with high-paying freight across the United States.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
+              {company.serviceBrand} is the IT-support service brand of {company.legalName}, providing
+              managed IT services, cybersecurity support, and remote helpdesk assistance across the
+              United States.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href="#contact" className="inline-flex items-center justify-center rounded-full bg-[#F59E0B] px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-110">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-              <a href="#services" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                Request Dispatch
-              </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/support/"
+                className={buttonVariants({ variant: 'accent', size: 'lg' })}
+              >
+                Request IT Support <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link
+                href="/services/"
+                className={buttonVariants({ variant: 'glass', size: 'lg' })}
+              >
+                Explore Services
+              </Link>
             </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-sm">
-                  <div className="text-2xl font-semibold text-white">{stat.value}</div>
-                  <div className="mt-1 text-sm text-slate-300">{stat.label}</div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              {trustChips.map((chip) => (
+                <div
+                  key={chip.title}
+                  className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm text-slate-100 backdrop-blur-sm"
+                >
+                  <span className="font-semibold">{chip.title}</span>
+                  <span className="mx-2 text-white/40">·</span>
+                  <span className="text-slate-200">{chip.detail}</span>
                 </div>
               ))}
             </div>
           </motion.div>
-
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="rounded-[32px] border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-md">
-            <div className="rounded-[24px] bg-white p-6 text-slate-900">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#1E3A8A]">Dispatch support</p>
-                  <h2 className="mt-2 text-2xl font-semibold">Built around your success</h2>
-                </div>
-                <div className="rounded-full bg-[#F59E0B]/10 p-3 text-[#F59E0B]">
-                  <ShieldCheck className="h-6 w-6" />
-                </div>
-              </div>
-              <div className="mt-8 space-y-4">
-                {[
-                  'Load planning with real-time lane awareness',
-                  'Broker communication that protects your margins',
-                  'Paperwork support that keeps operations moving',
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-[#1E3A8A]" />
-                    <span className="text-sm leading-7 text-slate-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <a href="#contact" className="mt-8 inline-flex items-center rounded-full bg-[#0F172A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1E3A8A]">
-                Book a Consultation <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </div>
-          </motion.div>
+          <HeroNetwork />
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950 to-transparent" />
       </section>
 
-      <section id="about" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <SectionHeading eyebrow="About the company" title="Reliable dispatch support grounded in experience and communication." description="Margarito Ramirez LLC provides professional dispatching services with a focus on practical support, clear communication, and strong load planning. The goal is simple: keep your truck moving with better opportunities and fewer operational headaches." />
-            <div className="mt-8 space-y-5 text-lg leading-8 text-slate-600">
-              <p>We help owner-operators and small fleets navigate freight decisions with more confidence. From broker negotiation to paperwork support and route planning, our team is built to keep operations steady and profitable.</p>
-              <p>Every load is evaluated with care, and each carrier relationship is handled with professionalism and respect. The service is designed to be responsive, transparent, and aligned with your business goals.</p>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              ['Industry knowledge', 'A practical understanding of carrier needs, lane timing, and broker expectations.'],
-              ['Reliable communication', 'Fast updates and clear next steps so you can stay in control.'],
-              ['Load planning', 'Planning that balances revenue opportunities with route efficiency.'],
-              ['Compliance support', 'Paperwork and carrier support that help reduce avoidable issues.'],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="border-y border-slate-200 bg-white/80 py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading eyebrow="Services" title="Dispatch support designed to keep your operation moving." description="The service framework is built around efficient communication, strong broker relationships, and dependable planning for a wide range of truck types." align="center" />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => (
-              <motion.article key={service} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.35, delay: index * 0.04 }} className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#1E3A8A]/10 text-[#1E3A8A]">
-                  <TrendingUp className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-900">{service}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">Professional dispatch support focused on stronger lanes, better revenue, and smoother operations.</p>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[32px] border border-slate-200 bg-slate-950 p-10 text-white shadow-xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#F59E0B]">Why choose us</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight">A professional dispatch team that respects your time and your business.</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-300">The goal is not to overwhelm you with volume. It is to provide dependable support that helps your operation stay profitable, organized, and moving.</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {values.map((value) => (
-              <div key={value} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-[#1E3A8A]" />
-                  <h3 className="text-lg font-semibold text-slate-900">{value}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-slate-200 bg-white py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading eyebrow="How it works" title="Start with a simple, direct process." description="We keep the onboarding experience clear so you know what happens next from the first call onward." align="center" />
-          <div className="mt-12 grid gap-6 lg:grid-cols-4">
-            {[
-              ['01', 'Submit Your Information'],
-              ['02', 'Dispatcher Contacts You'],
-              ['03', 'Complete Carrier Setup'],
-              ['04', 'Start Receiving Loads'],
-            ].map(([step, title]) => (
-              <div key={title} className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-8 text-center shadow-sm">
-                <div className="text-sm font-semibold uppercase tracking-[0.3em] text-[#1E3A8A]">{step}</div>
-                <h3 className="mt-4 text-xl font-semibold text-slate-900">{title}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <SectionHeading eyebrow="Industries served" title="Flexible support for a wide range of truck operations." description="We work with carriers and owner-operators across multiple equipment types and freight categories." align="center" />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {industries.map((industry) => (
-            <div key={industry} className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-900">{industry}</h3>
+      {/* Trust strip */}
+      <section className="border-b border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-10 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
+          {[
+            ['Legal business', company.legalName],
+            ['Established', company.established],
+            ['Entity number', company.entityNumber],
+            ['Support region', company.supportRegion],
+            ['Support hours', company.businessHours],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{label}</p>
+              <p className="mt-2 text-sm font-medium leading-6 text-slate-900">{value}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-[#F8FAFC] py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_0.8fr] lg:px-8">
-          <div>
-            <SectionHeading eyebrow="Benefits" title="Less time hunting loads. More time earning." description="The dispatch support is structured to reduce wasted miles, strengthen brokerage relationships, and give you a better path to consistent revenue." />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {benefits.map((benefit) => (
-                <div key={benefit} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <p className="text-base font-semibold text-slate-900">{benefit}</p>
-                </div>
-              ))}
+      {/* Services teaser */}
+      <section className="overflow-hidden border-b border-slate-200 bg-white py-6">
+        <div className="marquee-track flex gap-3 pr-3">
+          {[...company.capabilities, ...company.services.map((service) => service.shortName), ...company.capabilities, ...company.services.map((service) => service.shortName)].map(
+            (item, index) => {
+              const Icon = capabilityIcons[index % capabilityIcons.length] ?? Shield;
+              return (
+                <span
+                  key={`${item}-${index}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 py-2.5 text-sm font-medium text-slate-700"
+                >
+                  <Icon className="h-4 w-4 text-[var(--accent)]" />
+                  {item}
+                </span>
+              );
+            },
+          )}
+        </div>
+      </section>
+
+      {/* Value */}
+      <section className="border-y border-slate-200 bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <SectionHeading
+              eyebrow="IT that moves with your business"
+              title="Less technical friction. More confident work."
+              description="From an urgent desktop issue to a longer-term security priority, we begin with the real problem, clarify the next step, and keep communication understandable."
+            />
+            <div className="lg:text-right">
+              <Link
+                href="/about/"
+                className="inline-flex items-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                Meet the company <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </div>
           </div>
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-[#F59E0B]/10 p-3 text-[#F59E0B]">
-                <Clock3 className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#1E3A8A]">Testimonials</p>
-                <h3 className="text-xl font-semibold text-slate-900">Trusted by carriers who value dependable support.</h3>
-              </div>
-            </div>
-            <div className="mt-8 rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5">
-              <p className="text-sm leading-7 text-slate-600">“{company.testimonials[activeTestimonial].quote}”</p>
-              <div className="mt-3 text-sm font-semibold text-slate-900">{company.testimonials[activeTestimonial].name}</div>
-              <div className="text-sm text-slate-500">{company.testimonials[activeTestimonial].role}</div>
-              <div className="mt-5 flex gap-2">
-                {company.testimonials.map((testimonial, index) => (
-                  <button
-                    key={testimonial.name}
-                    aria-label={`Show testimonial ${index + 1}`}
-                    className={`h-2.5 w-2.5 rounded-full ${index === activeTestimonial ? 'bg-[#1E3A8A]' : 'bg-slate-300'}`}
-                    onClick={() => setActiveTestimonial(index)}
-                  />
-                ))}
-              </div>
-            </div>
+
+          <div data-gsap-stagger className="mt-14 grid gap-6 md:grid-cols-3">
+            {company.processShort.map((item, index) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="border-t border-slate-200 pt-6"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+                  {item.step}
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Core services */}
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="rounded-[36px] border border-slate-200 bg-gradient-to-br from-[#0F172A] to-[#1E3A8A] p-8 text-white shadow-2xl lg:p-12">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#F59E0B]">Ready to get started?</p>
-              <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Ready To Keep Your Truck Moving?</h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">Our experienced dispatch team is ready to help you find better freight and maximize your earnings.</p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a href="tel:8185550147" className="inline-flex items-center justify-center rounded-full bg-[#F59E0B] px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-110">
-                  <Phone className="mr-2 h-4 w-4" /> Call Now
-                </a>
-                <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                  Request Dispatch
-                </a>
+        <SectionHeading
+          eyebrow="Core services"
+          title="Complete support for everyday business technology."
+          description="Focused, practical services for organizations that need dependable technology without inflated promises or unclear scope."
+          align="center"
+        />
+        <div data-gsap-stagger className="mt-14 grid gap-6 lg:grid-cols-3">
+          {company.services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              whileHover={{ y: -6 }}
+              className="h-full"
+            >
+              <Card className="group relative h-full overflow-hidden transition-shadow duration-300 hover:shadow-[0_30px_80px_rgba(15,118,110,0.13)]">
+                <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-teal-400 to-cyan-300 transition-transform duration-500 group-hover:scale-x-100" />
+                <CardHeader>
+                  <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+                    {service.number}
+                  </p>
+                  <CardTitle className="mt-3 text-2xl">{service.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base leading-8 text-slate-600">{service.summary}</p>
+                  <p className="mt-5 text-sm leading-6 text-slate-500">
+                    <span className="font-semibold text-slate-700">Designed for</span>{' '}
+                    {service.designedFor}
+                  </p>
+                  <Link
+                    href="/support/"
+                    className="mt-7 inline-flex items-center text-sm font-semibold text-[var(--accent)] transition hover:gap-3"
+                  >
+                    Discuss this service <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pillars */}
+      <section className="border-y border-slate-200 bg-slate-950 py-24 text-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-300">
+            Built around operational reality
+          </p>
+          <h2 className="mt-4 max-w-3xl text-3xl font-semibold sm:text-4xl">
+            Security and support are connected.
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+            A stable technology environment depends on visibility, sound configuration, maintained
+            devices, recoverable data, and people who can get help.
+          </p>
+          <div data-gsap-stagger className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+            {company.pillars.map((pillar) => (
+              <div key={pillar.title} className="border-t border-white/15 pt-6">
+                <h3 className="text-xl font-semibold">{pillar.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{pillar.description}</p>
               </div>
-            </div>
-            <div className="rounded-[28px] border border-white/10 bg-white/10 p-6 backdrop-blur">
-              <div className="flex items-start gap-3">
-                <MessageCircle className="mt-1 h-5 w-5 text-[#F59E0B]" />
-                <div>
-                  <h3 className="text-xl font-semibold">Direct consultation</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-200">Speak with a dispatch professional about your lanes, equipment, and current goals.</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+      {/* Long process */}
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <SectionHeading
+          eyebrow="A straightforward support experience"
+          title="From request to resolution."
+          description="Every engagement begins with clear information and a confirmed next step."
+          align="center"
+        />
+        <div data-gsap-stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {company.processLong.map((item) => (
+            <div key={item.step} className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+                {item.step}
+              </p>
+              <h3 className="mt-3 text-xl font-semibold text-slate-900">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SMS education */}
+      <section className="border-y border-slate-200 bg-white py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-8">
           <div>
-            <SectionHeading eyebrow="Contact" title="Let’s talk about your next lane." description="Reach out for dispatch support, carrier onboarding, or a quick conversation about your operation." />
-            <div className="mt-8 space-y-4 rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 text-[#1E3A8A]" />
-                <div>
-                  <h3 className="font-semibold text-slate-900">California Address</h3>
-                  <p className="mt-1 text-sm leading-7 text-slate-600">{company.californiaAddress}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 text-[#1E3A8A]" />
-                <div>
-                  <h3 className="font-semibold text-slate-900">Texas Office</h3>
-                  <p className="mt-1 text-sm leading-7 text-slate-600">{company.texasOffice}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="mt-1 h-5 w-5 text-[#1E3A8A]" />
-                <div>
-                  <h3 className="font-semibold text-slate-900">Phone</h3>
-                  <p className="mt-1 text-sm leading-7 text-slate-600">{company.phone}</p>
-                </div>
-              </div>
-            </div>
+            <SectionHeading
+              eyebrow="Permission-based support communication"
+              title="Useful updates. No promotional noise."
+              description="Customers may separately choose Customer Care text messages for IT support tickets, troubleshooting coordination, and requested service information."
+            />
+            <ul className="mt-8 space-y-3 text-sm leading-7 text-slate-600">
+              <li>• The consent box starts unchecked</li>
+              <li>• Consent is not a condition of purchase</li>
+              <li>• No marketing or promotional SMS</li>
+              <li>• STOP and HELP are supported</li>
+            </ul>
+            <Link
+              href="/sms-consent/"
+              className="mt-8 inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
+            >
+              Review SMS Consent
+            </Link>
           </div>
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
-            <form className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="text-sm font-medium text-slate-700">
-                  Name
-                  <input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="Your name" />
-                </label>
-                <label className="text-sm font-medium text-slate-700">
-                  Phone
-                  <input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="(555) 123-4567" />
-                </label>
+          <div className="rounded-[32px] border border-slate-200 bg-[var(--background)] p-8">
+            <div className="rounded-[24px] bg-[var(--primary)] p-6 text-white shadow-xl">
+              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-teal-300">
+                <MessageSquare className="h-4 w-4" /> Customer Care SMS
               </div>
-              <label className="text-sm font-medium text-slate-700">
-                Email
-                <input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="you@example.com" />
-              </label>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="text-sm font-medium text-slate-700">
-                  Truck Type
-                  <input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="Dry Van" />
-                </label>
-                <label className="text-sm font-medium text-slate-700">
-                  MC Number
-                  <input className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="MC 123456" />
-                </label>
-              </div>
-              <label className="text-sm font-medium text-slate-700">
-                Message
-                <textarea className="mt-2 min-h-32 w-full rounded-2xl border border-slate-200 bg-[#F8FAFC] px-4 py-3 outline-none focus:border-[#1E3A8A]" placeholder="Tell us about your operation and what you need." />
-              </label>
-              <button className="inline-flex items-center rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E3A8A]">
-                Submit Request
-              </button>
-            </form>
+              <p className="mt-5 text-base leading-8 text-slate-100">
+                Your IT support ticket has been updated. Our team can coordinate the next
+                troubleshooting step.
+              </p>
+              <p className="mt-4 text-xs text-slate-400">Reply STOP to opt out · HELP for help</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-        <SectionHeading eyebrow="FAQ" title="Common questions about dispatch support." description="A clear overview of how the process works and what to expect when partnering with the team." align="center" />
-        <div className="mt-10">
-          <FaqAccordion items={company.faq} />
+      {/* Service area */}
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="grid gap-10 rounded-[36px] border border-slate-200 bg-white p-8 shadow-sm lg:grid-cols-[1.2fr_0.8fr] lg:p-12">
+          <div>
+            <SectionHeading
+              eyebrow="Remote reach, accountable support"
+              title="Supporting modern work across the United States."
+              description="Remote IT support availability is confirmed for each request based on the service, systems, location, and schedule."
+            />
+            <Link
+              href="/service-area/"
+              className="mt-8 inline-flex items-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            >
+              Explore Service Area <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
+          <div className="space-y-4 self-center">
+            <div className="rounded-2xl border border-slate-200 bg-[var(--background)] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Service model</p>
+              <p className="mt-2 font-semibold text-slate-900">Remote support across the United States</p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-[var(--background)] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Remote-first support
+              </p>
+              <p className="mt-2 font-semibold text-slate-900">Availability confirmed per request</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-y border-slate-200 bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Clear answers before you request support."
+            description="Practical information about services, hours, SMS choices, and how engagements begin."
+            align="center"
+          />
+          <div className="mx-auto mt-10 max-w-3xl">
+            <FaqAccordion items={[...company.faq]} />
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="rounded-[36px] bg-[linear-gradient(135deg,#0b1220,#0f766e)] p-8 text-white lg:p-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-200">
+            Let’s solve the next technology issue
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Ready for clearer IT support?</h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
+            Describe what you need and choose how our team should respond.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/support/"
+              className="inline-flex items-center justify-center rounded-full bg-teal-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-200"
+            >
+              Start a Support Request
+            </Link>
+            <Link
+              href="/contact/"
+              className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+              Contact Us
+            </Link>
+            <a
+              href={`mailto:${company.emails.support}`}
+              className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+            >
+              <Mail className="mr-2 h-4 w-4" /> Email Support
+            </a>
+          </div>
         </div>
       </section>
 
       <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
-        <a href="tel:8185550147" className="inline-flex items-center gap-2 rounded-full bg-[#F59E0B] px-4 py-3 text-sm font-semibold text-slate-950 shadow-lg transition hover:scale-[1.02]">
-          <PhoneCall className="h-4 w-4" /> Call Now
+        <a
+          href={`mailto:${company.emails.support}`}
+          className="inline-flex items-center gap-2 rounded-full bg-teal-400 px-4 py-3 text-sm font-semibold text-slate-950 shadow-lg transition hover:scale-[1.02]"
+        >
+          <Mail className="h-4 w-4" /> Email Support
         </a>
-        <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#0F172A] px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]">
-          <MessageCircle className="h-4 w-4" /> Request Quote
-        </a>
+        <Link
+          href="/support/"
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]"
+        >
+          <MessageSquare className="h-4 w-4" /> Request Support
+        </Link>
       </div>
 
       {showBackToTop ? (
         <button
+          type="button"
           aria-label="Back to top"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-24 right-5 z-40 rounded-full bg-white p-3 text-slate-900 shadow-lg ring-1 ring-slate-200 transition hover:bg-slate-50"
+          className="fixed bottom-28 right-5 z-40 rounded-full bg-white p-3 text-slate-900 shadow-lg ring-1 ring-slate-200 transition hover:bg-slate-50"
         >
           <ChevronUp className="h-5 w-5" />
         </button>
       ) : null}
-
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <div className="text-base font-semibold tracking-[0.2em] text-slate-900">{company.name}</div>
-            <p className="mt-2 max-w-md leading-7">Professional truck dispatch support built to help carriers stay loaded and improve revenue.</p>
-          </div>
-          <div className="flex flex-wrap gap-5">
-            <Link href="#services" className="transition hover:text-[#1E3A8A]">Services</Link>
-            <Link href="#contact" className="transition hover:text-[#1E3A8A]">Contact</Link>
-            <Link href="/privacy" className="transition hover:text-[#1E3A8A]">Privacy Policy</Link>
-            <Link href="/terms" className="transition hover:text-[#1E3A8A]">Terms</Link>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

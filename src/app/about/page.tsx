@@ -1,55 +1,94 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { company } from '@/lib/company';
 import { SectionHeading } from '@/components/section-heading';
 
-export const metadata = {
-  title: 'About | Margarito Ramirez LLC',
-  description: 'Learn more about Margarito Ramirez LLC and the professional dispatch support model built for owner-operators and small fleets.',
+export const metadata: Metadata = {
+  title: `About | ${company.serviceBrand}`,
+  description:
+    'Learn about Margarito Ramirez IT Solutions — the IT-support service brand of MARGARITO RAMIREZ LLC.',
 };
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-900">
-      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="rounded-[36px] border border-slate-200 bg-white p-10 shadow-sm lg:p-14">
-          <SectionHeading eyebrow="About" title="Built around professional dispatching, clear communication, and dependable support." description="Margarito Ramirez LLC is a California-based logistics support company focused on helping owner-operators and small fleets find better opportunities and stay organized in today’s freight market." />
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-6 text-lg leading-8 text-slate-600">
-              <p>Dispatching is more than finding available loads. It requires planning, professional communication, and the ability to understand what matters to each carrier.</p>
-              <p>That is the standard behind the service. Whether the need is route planning, paperwork support, broker communication, or consistent load follow-up, the focus remains on practical, reliable support that helps a trucking operation continue moving forward.</p>
-            </div>
-            <div className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-8">
-              <h3 className="text-2xl font-semibold text-slate-900">Why carriers choose this approach</h3>
-              <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
-                <li>• Clear communication with a professional dispatch team</li>
-                <li>• Stronger negotiation support for better rates</li>
-                <li>• More informed load planning and route decisions</li>
-                <li>• A service model focused on trust and accountability</li>
-              </ul>
-              <Link href="#contact" className="mt-8 inline-flex items-center rounded-full bg-[#0F172A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1E3A8A]">Contact the Team</Link>
-            </div>
+    <main>
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+          About our company
+        </p>
+        <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          Technology support grounded in clear communication.
+        </h1>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+          {company.brandStatement} We are a {company.businessType}.
+        </p>
+      </section>
+
+      <section className="border-y border-slate-200 bg-white py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-slate-900">Company profile</h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ['Legal name', company.legalName],
+              ['Sole member', company.soleMember],
+              ['Entity', company.businessType],
+              ['Formed', company.established],
+              ['Entity number', company.entityNumber],
+              ['Service brand', company.serviceBrand],
+            ].map(([label, value]) => (
+              <div key={label} className="border-t border-slate-200 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{label}</p>
+                <p className="mt-2 text-sm font-medium leading-6 text-slate-900">{value}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <section className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-        <div className="rounded-[32px] border border-slate-200 bg-slate-950 p-10 text-white shadow-xl">
-          <h3 className="text-2xl font-semibold">Company Details</h3>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#F59E0B]">Business</p>
-              <p className="mt-2 text-lg">{company.name}</p>
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#F59E0B]">Entity</p>
-              <p className="mt-2 text-lg">{company.entityNumber}</p>
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#F59E0B]">California Address</p>
-              <p className="mt-2 text-lg whitespace-pre-line">{company.californiaAddress}</p>
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#F59E0B]">Texas Office</p>
-              <p className="mt-2 text-lg whitespace-pre-line">{company.texasOffice}</p>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <SectionHeading
+              eyebrow="Our purpose"
+              title="Practical IT support without inflated promises."
+              description="We provide practical IT support and technology consulting for small and medium-sized businesses, local professional offices, and independent remote workers."
+            />
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Every engagement begins by understanding the request, confirming scope and availability,
+              and communicating the next step clearly.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm leading-7 text-slate-600">
+              <li>• Clear customer communication</li>
+              <li>• Service scope confirmed before work begins</li>
+              <li>• Accessible email-based support channels</li>
+              <li>• Optional, permission-based Customer Care SMS</li>
+            </ul>
+            <Link
+              href="/contact/"
+              className="mt-8 inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
+            >
+              Contact the company
+            </Link>
+          </div>
+          <div className="rounded-[32px] bg-slate-950 p-8 text-white lg:p-10">
+            <h3 className="text-2xl font-semibold">Locations</h3>
+            <div className="mt-8 space-y-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-300">
+                  California
+                </p>
+                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">
+                  {company.californiaAddress}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-300">
+                  Texas office
+                </p>
+                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-200">
+                  {company.texasOffice}
+                </p>
+              </div>
             </div>
           </div>
         </div>
