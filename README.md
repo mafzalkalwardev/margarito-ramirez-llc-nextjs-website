@@ -64,13 +64,15 @@ The content avoids invented guarantees and makes service scope, support hours, l
 
 - Editorial company layout (not a SaaS marketing template stack)
 - Brand-first full-bleed hero with Fraunces + IBM Plex Sans
-- Lean homepage: hero → facts → services → process → company → CTA
+- Lean homepage: hero → facts → typical request → process → owner → CTA
+- Owner bio and company profile on About
 - Shared architecture: `SiteContainer`, `PageHero`, header/footer, forms
 - Red professional palette with matching logo
 - Framer Motion used sparingly; GSAP scroll progress only
 - SEO sitemap, robots.txt, canonicals, Open Graph, and JSON-LD
 - Separate contact and SMS consent flows (Twilio/Vonage-friendly)
 - Static export optimized for GitHub Pages
+- Custom-domain switch prepared in `next.config.ts` (off until DNS is live)
 
 ## SEO
 
@@ -223,6 +225,21 @@ The deployment command publishes the generated `out/` directory to the repositor
 
 **Production URL:**
 https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website/
+
+### Custom domain (`margaritoramirezllc.com`)
+
+DNS for the brand domain is not connected yet. Until it is, keep `useCustomDomain = false` in `next.config.ts` and leave `company.siteUrl` on the GitHub Pages URL so assets and SEO stay correct.
+
+When DNS is ready:
+
+1. Point the domain to GitHub Pages (A/AAAA for apex, or CNAME for `www`).
+2. Add `public/CNAME` containing `margaritoramirezllc.com`.
+3. Set `useCustomDomain = true` in `next.config.ts`.
+4. Set `company.siteUrl` to `https://margaritoramirezllc.com`.
+5. Rebuild sitemap/robots if needed, then `npm run deploy`.
+6. In Google Search Console, verify the domain and submit the sitemap.
+
+Do **not** publish a CNAME before DNS works — GitHub may redirect the project Pages URL to the custom domain and take the live site offline.
 
 ## Repository
 

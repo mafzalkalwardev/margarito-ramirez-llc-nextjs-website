@@ -8,40 +8,52 @@ import { HomeMotion } from '@/components/home-motion';
 export default function Home() {
   return (
     <main>
-      {/* Hero: one composition, brand-first, full-bleed photo */}
-      <section className="relative isolate min-h-[88vh] overflow-hidden bg-[var(--ink)] text-white">
+      <section className="relative isolate overflow-hidden bg-[var(--ink)] text-white">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          aria-hidden="true"
+          className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2000&q=80')",
+              'radial-gradient(circle at 18% 20%, rgba(193,18,31,0.35), transparent 34%), radial-gradient(circle at 82% 10%, rgba(255,255,255,0.08), transparent 28%), linear-gradient(160deg, #0b0f19 0%, #171212 55%, #0b0f19 100%)',
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(11,15,25,0.92)_0%,rgba(11,15,25,0.78)_48%,rgba(11,15,25,0.45)_100%)]" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 hidden w-[42%] bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80')] bg-cover bg-center opacity-35 lg:block"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 hidden w-[42%] bg-gradient-to-l from-transparent to-[var(--ink)] lg:block"
+        />
 
-        <SiteContainer className="relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 sm:pb-20">
+        <SiteContainer className="relative py-24 sm:py-28 lg:py-32">
           <HomeMotion>
-            <p className="text-sm font-medium text-red-200">{company.serviceBrand}</p>
-            <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              {company.legalName}
+            <p className="text-sm font-semibold tracking-[0.04em] text-red-300">{company.serviceBrand}</p>
+            <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              {company.heroPromise}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-200">
-              Practical IT support for small businesses and remote professionals — managed systems,
-              security, and helpdesk help with clear scope before work begins.
+            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+              {company.brandStatement} Managed IT, cybersecurity support, and remote helpdesk assistance
+              across the United States — with scope confirmed before work begins.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/support/" className={buttonVariants({ variant: 'primary', size: 'lg' })}>
                 Request support
               </Link>
-              <Link href="/services/" className={buttonVariants({ variant: 'glass', size: 'lg' })}>
-                View services
+              <Link href="/about/" className={buttonVariants({ variant: 'glass', size: 'lg' })}>
+                Meet the company
               </Link>
             </div>
+            <p className="mt-8 text-sm text-slate-400">
+              Legal entity: {company.legalName} · Support:{' '}
+              <a className="text-red-200 underline-offset-2 hover:underline" href={`mailto:${company.emails.support}`}>
+                {company.emails.support}
+              </a>
+            </p>
           </HomeMotion>
         </SiteContainer>
       </section>
 
-      {/* Company facts — plain, not fake stats */}
       <section className="border-b border-[var(--border)] bg-white">
         <SiteContainer className="grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -58,7 +70,6 @@ export default function Home() {
         </SiteContainer>
       </section>
 
-      {/* Services — editorial list, not card collage */}
       <section className="bg-[var(--background)] py-20 sm:py-24">
         <SiteContainer>
           <div className="flex flex-col gap-6 border-b border-[var(--border)] pb-10 sm:flex-row sm:items-end sm:justify-between">
@@ -92,8 +103,29 @@ export default function Home() {
         </SiteContainer>
       </section>
 
-      {/* How we work — one process only */}
       <section className="border-y border-[var(--border)] bg-white py-20 sm:py-24">
+        <SiteContainer className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+              Real support work
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
+              {company.typicalRequest.title}
+            </h2>
+            <p className="mt-5 text-base leading-8 text-[var(--muted)]">{company.typicalRequest.scenario}</p>
+          </div>
+          <ol className="space-y-6 border border-[var(--border)] bg-[var(--background)] p-7">
+            {company.typicalRequest.steps.map((step, index) => (
+              <li key={step} className="grid gap-3 sm:grid-cols-[48px_1fr]">
+                <span className="text-sm font-semibold text-[var(--accent)]">0{index + 1}</span>
+                <p className="text-sm leading-7 text-[var(--muted)]">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </SiteContainer>
+      </section>
+
+      <section className="bg-[var(--background)] py-20 sm:py-24">
         <SiteContainer>
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">How we work</p>
@@ -118,18 +150,15 @@ export default function Home() {
         </SiteContainer>
       </section>
 
-      {/* About / credibility */}
-      <section className="bg-[var(--background)] py-20 sm:py-24">
-        <SiteContainer className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section className="border-y border-[var(--border)] bg-white py-20 sm:py-24">
+        <SiteContainer className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Company</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Owner</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--ink)] sm:text-4xl">
-              A California LLC serving remote work across the United States.
+              {company.owner}
             </h2>
-            <p className="mt-5 text-base leading-8 text-[var(--muted)]">
-              {company.brandStatement} Owned by {company.owner}. We keep communication plain, confirm
-              scope before work, and separate ordinary support requests from optional Customer Care SMS.
-            </p>
+            <p className="mt-2 text-sm font-medium text-[var(--muted)]">{company.soleMember}</p>
+            <p className="mt-5 text-base leading-8 text-[var(--muted)]">{company.ownerBio}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/about/" className={buttonVariants({ variant: 'outline' })}>
                 About the company
@@ -140,15 +169,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border border-[var(--border)] bg-white p-8">
+          <div className="border border-[var(--border)] bg-[var(--background)] p-8">
             <dl className="space-y-5 text-sm">
               <div>
                 <dt className="font-semibold text-[var(--ink)]">Legal name</dt>
                 <dd className="mt-1 text-[var(--muted)]">{company.legalName}</dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-[var(--ink)]">Sole member</dt>
-                <dd className="mt-1 text-[var(--muted)]">{company.soleMember}</dd>
               </div>
               <div>
                 <dt className="font-semibold text-[var(--ink)]">Entity number</dt>
@@ -162,12 +187,17 @@ export default function Home() {
                   </a>
                 </dd>
               </div>
+              {!company.phoneIsPlaceholder ? (
+                <div>
+                  <dt className="font-semibold text-[var(--ink)]">Phone</dt>
+                  <dd className="mt-1 text-[var(--muted)]">{company.phone}</dd>
+                </div>
+              ) : null}
             </dl>
           </div>
         </SiteContainer>
       </section>
 
-      {/* Closing CTA */}
       <section className="bg-[var(--ink)] py-20 text-white">
         <SiteContainer className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">

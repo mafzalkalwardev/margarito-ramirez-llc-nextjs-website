@@ -17,12 +17,27 @@ export const company = {
     sms: 'sms@margaritoramirezllc.com',
   },
   domain: 'https://margaritoramirezllc.com',
+  /** Live indexable URL until custom-domain DNS is connected. */
   siteUrl: 'https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website',
+  githubPagesUrl: 'https://mafzalkalwardev.github.io/margarito-ramirez-llc-nextjs-website',
   businessHours: 'Monday–Friday, 8:00 AM–6:00 PM Central Time; closed weekends',
   supportRegion: 'United States',
   tagline: 'Dependable service. Clear communication.',
   brandStatement:
     'Margarito Ramirez IT Solutions is the IT-support service brand of MARGARITO RAMIREZ LLC.',
+  ownerBio:
+    'Margarito Ramirez is the sole member of MARGARITO RAMIREZ LLC. Through Margarito Ramirez IT Solutions, he provides practical managed IT, cybersecurity support, and remote helpdesk assistance for small businesses, professional offices, and independent remote workers. The focus is straightforward communication, confirmed scope before work begins, and support that stays understandable.',
+  heroPromise: 'Clear IT support for the systems your business already relies on.',
+  typicalRequest: {
+    title: 'What a typical request looks like',
+    scenario:
+      'A small office reports that shared files are slow, email access is unreliable for two remote staff, and a recent workstation update may have changed security settings.',
+    steps: [
+      'They submit a support request with preferred contact method and a short description of the symptoms.',
+      'We review the systems involved, access requirements, and urgency, then confirm what is in scope.',
+      'They receive scheduling or next-step guidance, plus documented follow-up — without being enrolled in SMS unless they separately opt in.',
+    ],
+  },
   seo: {
     title: 'Margarito Ramirez IT Solutions | Managed IT, Cybersecurity & Remote Helpdesk',
     description:

@@ -22,7 +22,7 @@ export function ScrollExperience() {
         scrollTrigger: {
           start: 0,
           end: 'max',
-          scrub: 0.2,
+          scrub: 0.45,
         },
       },
     );
